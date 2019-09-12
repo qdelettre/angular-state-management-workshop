@@ -5,11 +5,6 @@
   "projects": {
     "todo-app": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
       "root": "projects/todo-app",
       "sourceRoot": "projects/todo-app/src",
       "prefix": "todo",
@@ -76,12 +71,6 @@
             }
           }
         },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "todo-app:build"
-          }
-        },
         "test": {
           "builder": "@nrwl/jest:jest",
           "options": {
@@ -95,7 +84,7 @@
           "options": {
             "tsConfig": [
               "projects/todo-app/tsconfig.app.json",
-              "projects/todo-app/tsconfig.spec.json",
+              "projects/todo-app/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -104,5 +93,13 @@
         }
       }
     }},
-  "defaultProject": "todo-app"
+  "defaultProject": "todo-app",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  },
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  }
 }
