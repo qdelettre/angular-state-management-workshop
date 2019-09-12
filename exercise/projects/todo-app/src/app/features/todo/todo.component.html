@@ -1,1 +1,11 @@
-<p>todo works!</p>
+<h1>What do I need to do?</h1>
+
+<todo-todo-item
+  *ngFor="let todo of todos | async"
+  [todo]="todo"
+  (toggle)="toggleTodo($event)"
+  (remove)="removeTodo($event)"
+></todo-todo-item>
+<p *ngIf="(todosCount | async) === 0">
+  We're all done! Try to add some new tasks...
+</p>

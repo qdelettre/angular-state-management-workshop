@@ -1,5 +1,4 @@
 mat-toolbar {
-
   img {
     height: 80%;
     padding: 10% 20px;
@@ -12,6 +11,10 @@ mat-toolbar {
   button {
     margin: 0 10px;
   }
+
+  iframe {
+    width: 160px;
+    height: 20px;
+    margin: 0 0 0 10px;
+  }
 }
-
-
