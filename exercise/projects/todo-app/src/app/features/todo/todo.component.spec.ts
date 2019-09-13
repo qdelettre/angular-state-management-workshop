@@ -1,30 +1,43 @@
 import { By } from '@angular/platform-browser';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { SharedModule } from '../../shared/shared.module';
 
-import { TodoComponent } from './todo.component';
 import {
   selectTodos,
   selectTodosCount,
   selectTodoFilter
 } from './state/todo.selectors';
+import { TodoComponent } from './todo.component';
+import { TodoItemComponent } from './todo-item/todo-item.component';
 
-describe.skip('TodoComponent', () => {
+describe('TodoComponent', () => {
   let component: TodoComponent;
   let fixture: ComponentFixture<TodoComponent>;
   let store: MockStore<{}>;
 
+  const getCount = () =>
+    fixture.debugElement.query(By.css('.controls > button:last-of-type')).nativeElement.textContent.trim();
+
+  const getDescription = () =>
+    fixture.debugElement.query(By.css('.controls > span')).nativeElement.textContent.trim();
+
   const getTodoItems = () =>
     fixture.debugElement.queryAll(By.css('todo-todo-item'));
 
+  const getTodoItemText = (index: number) =>
+    fixture.debugElement
+      .queryAll(By.css('todo-todo-item'))[index]
+      .query(By.css('p')).nativeElement.textContent;
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [SharedModule],
+      imports: [NoopAnimationsModule, SharedModule],
       providers: [provideMockStore()],
-      declarations: [TodoComponent]
+      declarations: [TodoComponent, TodoItemComponent]
     }).compileComponents();
   }));
 
@@ -34,15 +47,38 @@ describe.skip('TodoComponent', () => {
     store = TestBed.get<Store<{}>>(Store);
   });
 
-  it('should render initial todos', () => {
+  it('should render todos', () => {
     store.overrideSelector(selectTodos, [
-      { id: '123', title: 'Test', done: false }
+      { id: '1', title: 'Test 1', done: true },
+      { id: '2', title: 'Test 2', done: false }
     ]);
-    store.overrideSelector(selectTodosCount, 1);
+    store.overrideSelector(selectTodosCount, 2);
     store.overrideSelector(selectTodoFilter, 'ALL');
     fixture.detectChanges();
 
-    expect(getTodoItems().length).toBe(1);
-    expect(getTodoItems()[0].nativeElement.textContent).toBe('Test');
+    expect(getTodoItems().length).toBe(2);
+    expect(getTodoItemText(0)).toBe('Test 1');
+    expect(getDescription()).toBe('Displaying all todos');
+    expect(getCount()).toBe('2');
+  });
+
+  it('displays correct description based on filter', () => {
+    store.overrideSelector(selectTodos, []);
+    store.overrideSelector(selectTodosCount, 2);
+    store.overrideSelector(selectTodoFilter, 'DONE');
+    fixture.detectChanges();
+
+    expect(getDescription()).toBe('Displaying done todos');
+    expect(getCount()).toBe('2');
+  });
+
+  it('displays correct description based on filter', () => {
+    store.overrideSelector(selectTodos, []);
+    store.overrideSelector(selectTodosCount, 2);
+    store.overrideSelector(selectTodoFilter, 'ACTIVE');
+    fixture.detectChanges();
+
+    expect(getDescription()).toBe('Displaying active todos');
+    expect(getCount()).toBe('2');
   });
 });
