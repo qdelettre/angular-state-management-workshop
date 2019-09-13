@@ -46,7 +46,7 @@ describe('Todo Reducer', () => {
   });
 
   describe('remove todo action', () => {
-    it('should toggle todo', () => {
+    it('should remove todo', () => {
       const id = Object.keys(initialState.items)[0];
       const action = removeTodo({ id });
 
@@ -57,8 +57,19 @@ describe('Todo Reducer', () => {
     });
   });
 
+  describe('remove done todos action', () => {
+    it('should remove done todos', () => {
+      const action = removeDoneTodos();
+
+      const result = reducer(initialState, action);
+
+      const ids = Object.keys(result.items);
+      expect(ids.length).toBe(3);
+    });
+  });
+
   describe('set todo filter', () => {
-    it('should remove all done todos', () => {
+    it('should set the filter', () => {
       const action = filterTodos({ filter: 'ACTIVE' });
 
       const result = reducer(initialState, action);
