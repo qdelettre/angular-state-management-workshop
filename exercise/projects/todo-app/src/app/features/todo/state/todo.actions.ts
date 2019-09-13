@@ -1,9 +1,15 @@
+import uuid from 'uuid/v4';
 import { createAction, props } from '@ngrx/store';
 import { TodoFilter } from './todo.model';
 
 export const addTodo = createAction(
   '[Todo Page] Add Todo',
   props<{ title: string }>()
+);
+
+export const addTodoWithId = createAction(
+  '[Todo Page] Add Todo (with ID)',
+  (title: string) => ({ title, id: uuid() })
 );
 
 export const toggleTodo = createAction(
