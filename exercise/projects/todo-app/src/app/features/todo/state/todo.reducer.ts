@@ -17,13 +17,15 @@ export interface State {
 const id1 = uuid();
 const id2 = uuid();
 const id3 = uuid();
+const id4 = uuid();
 
 export const initialState: State = {
   items: {
-    [id1]: { id: id1, title: 'Learn NgRx', done: false },
-    [id2]: { id: id2, title: 'Use NgRx in your apps', done: false },
-    [id3]: {
-      id: id3,
+    [id1]: { id: id1, title: 'Sign up for NgRx', done: true },
+    [id2]: { id: id2, title: 'Learn NgRx', done: false },
+    [id3]: { id: id3, title: 'Use NgRx in your apps', done: false },
+    [id4]: {
+      id: id4,
       title: 'Implement amazing features for users',
       done: false
     }
@@ -73,7 +75,25 @@ const todoReducer = createReducer(
     };
     delete newState.items[id];
     return newState;
-  })
+  }),
+
+  on(TodoActions.removeDoneTodos, state => {
+    const notDoneIds = Object.values(state.items)
+      .filter(item => !item.done)
+      .map(item => item.id);
+    return {
+      ...state,
+      items: notDoneIds.reduce((result, nextId) => {
+        result[nextId] = state.items[nextId];
+        return result;
+      }, {})
+    };
+  }),
+
+  on(TodoActions.filterTodos, (state, { filter }) => ({
+    ...state,
+    todoFilter: filter
+  }))
 );
 
 export function reducer(state: State | undefined, action: Action) {

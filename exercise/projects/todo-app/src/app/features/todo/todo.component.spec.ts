@@ -6,7 +6,11 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { SharedModule } from '../../shared/shared.module';
 
 import { TodoComponent } from './todo.component';
-import { selectAllTodos, selectTodosCount } from './state/todo.selectors';
+import {
+  selectTodos,
+  selectTodosCount,
+  selectTodoFilter
+} from './state/todo.selectors';
 
 describe.skip('TodoComponent', () => {
   let component: TodoComponent;
@@ -31,10 +35,11 @@ describe.skip('TodoComponent', () => {
   });
 
   it('should render initial todos', () => {
-    store.overrideSelector(selectAllTodos, [
+    store.overrideSelector(selectTodos, [
       { id: '123', title: 'Test', done: false }
     ]);
     store.overrideSelector(selectTodosCount, 1);
+    store.overrideSelector(selectTodoFilter, 'ALL');
     fixture.detectChanges();
 
     expect(getTodoItems().length).toBe(1);

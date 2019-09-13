@@ -5,8 +5,10 @@ import {
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
+  MatFormFieldModule,
   MatIconModule,
   MatInputModule,
+  MatMenuModule,
   MatToolbarModule
 } from '@angular/material';
 
@@ -20,7 +22,9 @@ import {
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatMenuModule
   ],
   exports: [
     CommonModule,
@@ -30,7 +34,9 @@ import {
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatMenuModule
   ]
 })
 export class SharedModule {}

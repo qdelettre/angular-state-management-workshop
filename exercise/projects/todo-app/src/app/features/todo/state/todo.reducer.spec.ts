@@ -1,5 +1,11 @@
 import { reducer, initialState } from './todo.reducer';
-import { addTodo, removeTodo, toggleTodo } from './todo.actions';
+import {
+  addTodo,
+  filterTodos,
+  removeDoneTodos,
+  removeTodo,
+  toggleTodo
+} from './todo.actions';
 
 describe('Todo Reducer', () => {
   describe('an unknown action', () => {
@@ -19,9 +25,9 @@ describe('Todo Reducer', () => {
       const result = reducer(initialState, action);
 
       const ids = Object.keys(result.items);
-      expect(ids.length).toBe(4);
-      expect(result.items[ids[3]]).toEqual({
-        id: ids[3],
+      expect(ids.length).toBe(5);
+      expect(result.items[ids[4]]).toEqual({
+        id: ids[4],
         title: 'Test',
         done: false
       });
@@ -30,7 +36,7 @@ describe('Todo Reducer', () => {
 
   describe('toggle todo action', () => {
     it('should toggle todo', () => {
-      const id = Object.keys(initialState.items)[0];
+      const id = Object.keys(initialState.items)[1];
       const action = toggleTodo({ id });
 
       const result = reducer(initialState, action);
@@ -47,7 +53,17 @@ describe('Todo Reducer', () => {
       const result = reducer(initialState, action);
 
       const ids = Object.keys(result.items);
-      expect(ids.length).toBe(2);
+      expect(ids.length).toBe(3);
+    });
+  });
+
+  describe('set todo filter', () => {
+    it('should remove all done todos', () => {
+      const action = filterTodos({ filter: 'ACTIVE' });
+
+      const result = reducer(initialState, action);
+
+      expect(result.todoFilter).toBe('ACTIVE');
     });
   });
 });

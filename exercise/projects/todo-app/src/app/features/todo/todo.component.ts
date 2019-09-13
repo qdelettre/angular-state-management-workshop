@@ -1,10 +1,21 @@
+import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { Todo } from './state/todo.model';
-import { selectAllTodos, selectTodosCount } from './state/todo.selectors';
-import { removeTodo, toggleTodo } from './state/todo.actions';
+import {
+  addTodo,
+  filterTodos,
+  removeDoneTodos,
+  removeTodo,
+  toggleTodo
+} from './state/todo.actions';
+import {
+  selectTodoFilter,
+  selectTodos,
+  selectTodosCount
+} from './state/todo.selectors';
+import { Todo, TodoFilter } from './state/todo.model';
 
 @Component({
   selector: 'todo-todo',
@@ -14,15 +25,26 @@ import { removeTodo, toggleTodo } from './state/todo.actions';
 export class TodoComponent implements OnInit {
   todos: Observable<Todo[]>;
   todosCount: Observable<number>;
+  todosFilter: Observable<string>;
+
+  newTodoTitle: string;
 
   constructor(private store: Store<{}>) {}
 
   ngOnInit() {
-    this.todos = this.store.select(selectAllTodos);
+    this.todos = this.store.select(selectTodos);
     this.todosCount = this.store.select(selectTodosCount);
+    this.todosFilter = this.store.select(selectTodoFilter);
   }
 
-  addTodo() {}
+  addTodo(form: NgForm) {
+    if (form.valid) {
+      this.store.dispatch(addTodo({ title: this.newTodoTitle }));
+      this.newTodoTitle = '';
+      form.resetForm();
+      form.reset();
+    }
+  }
 
   toggleTodo(id: string) {
     this.store.dispatch(toggleTodo({ id }));
@@ -32,7 +54,11 @@ export class TodoComponent implements OnInit {
     this.store.dispatch(removeTodo({ id }));
   }
 
-  removeDoneTodos() {}
+  removeDoneTodos() {
+    this.store.dispatch(removeDoneTodos());
+  }
 
-  setTodoFilter() {}
+  setTodoFilter(filter: TodoFilter) {
+    this.store.dispatch(filterTodos({ filter }));
+  }
 }
