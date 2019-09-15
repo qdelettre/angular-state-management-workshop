@@ -9,10 +9,12 @@ import { SharedModule } from '../../shared/shared.module';
 import {
   selectTodos,
   selectTodosCount,
-  selectTodoFilter
+  selectTodoFilter,
+  selectEditedTodo
 } from './state/todo.selectors';
 import { TodoComponent } from './todo.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
+import { TodoEditorComponent } from './todo-editor/todo-editor.component';
 
 describe('TodoComponent', () => {
   let component: TodoComponent;
@@ -20,24 +22,28 @@ describe('TodoComponent', () => {
   let store: MockStore<{}>;
 
   const getCount = () =>
-    fixture.debugElement.query(By.css('.controls > button:last-of-type')).nativeElement.textContent.trim();
+    fixture.debugElement
+      .query(By.css('.controls > button:last-of-type'))
+      .nativeElement.textContent.trim();
 
   const getDescription = () =>
-    fixture.debugElement.query(By.css('.controls > span')).nativeElement.textContent.trim();
+    fixture.debugElement
+      .query(By.css('.controls > span'))
+      .nativeElement.textContent.trim();
 
   const getTodoItems = () =>
     fixture.debugElement.queryAll(By.css('todo-todo-item'));
 
   const getTodoItemText = (index: number) =>
     fixture.debugElement
-      .queryAll(By.css('todo-todo-item'))[index]
-      .query(By.css('p')).nativeElement.textContent;
+      .queryAll(By.css('todo-todo-item'))
+      [index].query(By.css('p')).nativeElement.textContent;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [NoopAnimationsModule, SharedModule],
       providers: [provideMockStore()],
-      declarations: [TodoComponent, TodoItemComponent]
+      declarations: [TodoComponent, TodoItemComponent, TodoEditorComponent]
     }).compileComponents();
   }));
 
@@ -54,6 +60,7 @@ describe('TodoComponent', () => {
     ]);
     store.overrideSelector(selectTodosCount, 2);
     store.overrideSelector(selectTodoFilter, 'ALL');
+    store.overrideSelector(selectEditedTodo, null);
     fixture.detectChanges();
 
     expect(getTodoItems().length).toBe(2);
@@ -66,6 +73,7 @@ describe('TodoComponent', () => {
     store.overrideSelector(selectTodos, []);
     store.overrideSelector(selectTodosCount, 2);
     store.overrideSelector(selectTodoFilter, 'DONE');
+    store.overrideSelector(selectEditedTodo, null);
     fixture.detectChanges();
 
     expect(getDescription()).toBe('Displaying done todos');
@@ -76,6 +84,7 @@ describe('TodoComponent', () => {
     store.overrideSelector(selectTodos, []);
     store.overrideSelector(selectTodosCount, 2);
     store.overrideSelector(selectTodoFilter, 'ACTIVE');
+    store.overrideSelector(selectEditedTodo, null);
     fixture.detectChanges();
 
     expect(getDescription()).toBe('Displaying active todos');

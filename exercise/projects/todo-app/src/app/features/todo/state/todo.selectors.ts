@@ -28,3 +28,8 @@ export const selectTodosCount = createSelector(
   selectTodos,
   todos => todos.length
 );
+
+export const selectEditedTodo = createSelector(
+  selectTodoFeature,
+  todo => todo.items[todo.editedTodoId]
+);

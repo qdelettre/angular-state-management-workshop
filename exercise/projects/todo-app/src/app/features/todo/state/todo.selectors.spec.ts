@@ -6,14 +6,14 @@ describe('Todo selectors', () => {
     it('returns all todos with ALL filter', () => {
       const result = selectTodos.projector(initialState, 'ALL');
       expect(result.length).toBe(4);
-      expect(result[0].title).toBe('Sign up for NgRx');
+      expect(result[0].title).toBe('Sign up for NgRx workshop');
       expect(result[0].done).toBe(true);
     });
 
     it('returns done todos with DONE filter', () => {
       const result = selectTodos.projector(initialState, 'DONE');
       expect(result.length).toBe(1);
-      expect(result[0].title).toBe('Sign up for NgRx');
+      expect(result[0].title).toBe('Sign up for NgRx workshop');
       expect(result[0].done).toBe(true);
     });
 

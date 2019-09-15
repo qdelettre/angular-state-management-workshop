@@ -51,10 +51,18 @@
   <button mat-flat-button disabled>{{ todosCount | async }}</button>
 </div>
 
+<todo-todo-editor
+  *ngIf="todosEditedTodo | async as editedTodo"
+  [todo]="editedTodo"
+  (save)="saveEditTodo($event)"
+  (cancel)="cancelEditTodo()"
+></todo-todo-editor>
+
 <todo-todo-item
   *ngFor="let todo of todos | async"
   [todo]="todo"
   (toggle)="toggleTodo($event)"
+  (edit)="editTodo($event)"
   (remove)="removeTodo($event)"
 ></todo-todo-item>
 <p *ngIf="(todosCount | async) === 0">

@@ -5,12 +5,16 @@ import { Observable } from 'rxjs';
 
 import {
   addTodo,
+  cancelEditTodo,
+  editTodo,
   filterTodos,
   removeDoneTodos,
   removeTodo,
-  toggleTodo
+  toggleTodo,
+  updateTodo
 } from './state/todo.actions';
 import {
+  selectEditedTodo,
   selectTodoFilter,
   selectTodos,
   selectTodosCount
@@ -26,6 +30,7 @@ export class TodoComponent implements OnInit {
   todos: Observable<Todo[]>;
   todosCount: Observable<number>;
   todosFilter: Observable<string>;
+  todosEditedTodo: Observable<Todo | undefined>;
 
   newTodoTitle: string;
 
@@ -35,6 +40,7 @@ export class TodoComponent implements OnInit {
     this.todos = this.store.pipe(select(selectTodos));
     this.todosCount = this.store.pipe(select(selectTodosCount));
     this.todosFilter = this.store.pipe(select(selectTodoFilter));
+    this.todosEditedTodo = this.store.pipe(select(selectEditedTodo));
   }
 
   addTodo(form: NgForm) {
@@ -48,6 +54,18 @@ export class TodoComponent implements OnInit {
 
   toggleTodo(id: string) {
     this.store.dispatch(toggleTodo({ id }));
+  }
+
+  editTodo(id: string) {
+    this.store.dispatch(editTodo({ id }));
+  }
+
+  cancelEditTodo() {
+    this.store.dispatch(cancelEditTodo());
+  }
+
+  saveEditTodo(todo: Todo) {
+    this.store.dispatch(updateTodo({ todo }));
   }
 
   removeTodo(id: string) {

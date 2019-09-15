@@ -1,6 +1,6 @@
 import uuid from 'uuid/v4';
 import { createAction, props } from '@ngrx/store';
-import { TodoFilter } from './todo.model';
+import { Todo, TodoFilter } from './todo.model';
 
 export const addTodo = createAction(
   '[Todo Page] Add Todo',
@@ -20,6 +20,18 @@ export const toggleTodo = createAction(
 export const removeTodo = createAction(
   '[Todo Page] Remove Todo',
   props<{ id: string }>()
+);
+
+export const editTodo = createAction(
+  '[Todo Page] Edit Todo',
+  props<{ id: string }>()
+);
+
+export const cancelEditTodo = createAction('[Todo Page] Cancel edit Todo');
+
+export const updateTodo = createAction(
+  '[Todo Page] Update Todo',
+  props<{ todo: Todo }>()
 );
 
 export const removeDoneTodos = createAction('[Todo Page] Remove Done Todos');

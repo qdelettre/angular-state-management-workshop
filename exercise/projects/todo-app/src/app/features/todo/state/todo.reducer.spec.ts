@@ -1,10 +1,12 @@
 import { reducer, initialState } from './todo.reducer';
 import {
   addTodo,
+  editTodo,
   filterTodos,
   removeDoneTodos,
   removeTodo,
-  toggleTodo
+  toggleTodo,
+  updateTodo
 } from './todo.actions';
 
 describe('Todo Reducer', () => {
@@ -75,6 +77,32 @@ describe('Todo Reducer', () => {
       const result = reducer(initialState, action);
 
       expect(result.todoFilter).toBe('ACTIVE');
+    });
+  });
+
+  describe('set edited todo id', () => {
+    it('should set the edited todo id', () => {
+      const id = Object.keys(initialState.items)[0];
+      const action = editTodo({ id });
+
+      const result = reducer(initialState, action);
+
+      expect(result.editedTodoId).toBe(id);
+    });
+  });
+
+  describe('update todo', () => {
+    it('should update todo', () => {
+      const id = Object.keys(initialState.items)[0];
+      const action = updateTodo({
+        todo: { id, title: 'Updated', done: false }
+      });
+
+      const result = reducer(initialState, action);
+
+      expect(result.editedTodoId).toBe(null);
+      expect(result.items[id].title).toBe('Updated');
+      expect(result.items[id].done).toBe(false);
     });
   });
 });
