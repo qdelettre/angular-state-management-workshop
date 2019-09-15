@@ -1,6 +1,6 @@
 import { NgForm } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import {
@@ -32,9 +32,9 @@ export class TodoComponent implements OnInit {
   constructor(private store: Store<{}>) {}
 
   ngOnInit() {
-    this.todos = this.store.select(selectTodos);
-    this.todosCount = this.store.select(selectTodosCount);
-    this.todosFilter = this.store.select(selectTodoFilter);
+    this.todos = this.store.pipe(select(selectTodos));
+    this.todosCount = this.store.pipe(select(selectTodosCount));
+    this.todosFilter = this.store.pipe(select(selectTodoFilter));
   }
 
   addTodo(form: NgForm) {
