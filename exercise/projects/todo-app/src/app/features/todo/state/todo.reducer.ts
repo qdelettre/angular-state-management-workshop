@@ -10,7 +10,7 @@ export interface State {
   items: {
     [id: string]: Todo;
   };
-  editedTodoId: string;
+  editedTodoId: string | null;
   todoFilter: TodoFilter;
 }
 

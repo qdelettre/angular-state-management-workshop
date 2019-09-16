@@ -9,6 +9,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatMenuModule,
+  MatProgressSpinnerModule,
   MatToolbarModule
 } from '@angular/material';
 
@@ -24,7 +25,8 @@ import {
     MatCardModule,
     MatIconModule,
     MatFormFieldModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     CommonModule,
@@ -36,7 +38,8 @@ import {
     MatCardModule,
     MatIconModule,
     MatFormFieldModule,
-    MatMenuModule
+    MatMenuModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule {}

@@ -1,0 +1,9 @@
+<h1>User Admin</h1>
+
+<mat-spinner *ngIf="loading | async"></mat-spinner>
+
+<todo-user-item
+  *ngFor="let user of users | async"
+  [user]="user"
+  (remove)="onRemove($event)"
+></todo-user-item>
