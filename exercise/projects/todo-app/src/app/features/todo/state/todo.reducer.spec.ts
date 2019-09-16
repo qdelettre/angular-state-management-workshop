@@ -6,7 +6,8 @@ import {
   removeDoneTodos,
   removeTodo,
   toggleTodo,
-  updateTodo
+  updateTodo,
+  cancelEditTodo
 } from './todo.actions';
 
 describe('Todo Reducer', () => {
@@ -88,6 +89,16 @@ describe('Todo Reducer', () => {
       const result = reducer(initialState, action);
 
       expect(result.editedTodoId).toBe(id);
+    });
+  });
+
+  describe('unset edit todo id', () => {
+    it('should set the edited todo id', () => {
+      const action = cancelEditTodo();
+
+      const result = reducer(initialState, action);
+
+      expect(result.editedTodoId).toBe(null);
     });
   });
 
