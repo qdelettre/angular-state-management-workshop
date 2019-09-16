@@ -41,9 +41,7 @@ describe('UserEffects', () => {
   });
 
   it('loads users', () => {
-    scheduler.run(helpers => {
-      const { expectObservable, hot, cold } = helpers;
-
+    scheduler.run(({ expectObservable, hot, cold }) => {
       actions$ = hot('--a-', { a: loadUsers() });
 
       userIntegrationServiceMock.load.mockReturnValue(cold('--a|', { a: [] }));
@@ -55,9 +53,7 @@ describe('UserEffects', () => {
   });
 
   it('handles failed loading', () => {
-    scheduler.run(helpers => {
-      const { expectObservable, hot, cold } = helpers;
-
+    scheduler.run(({ expectObservable, hot, cold }) => {
       actions$ = hot('--a-', { a: loadUsers() });
 
       userIntegrationServiceMock.load.mockReturnValue(cold('--#|'));
@@ -69,9 +65,7 @@ describe('UserEffects', () => {
   });
 
   it('it delivers correct (second) response even if first one comes in as last', () => {
-    scheduler.run(helpers => {
-      const { expectObservable, hot, cold } = helpers;
-
+    scheduler.run(({ expectObservable, hot, cold }) => {
       actions$ = hot('ab', { a: loadUsers(), b: loadUsers() });
 
       userIntegrationServiceMock.load.mockReturnValueOnce(
