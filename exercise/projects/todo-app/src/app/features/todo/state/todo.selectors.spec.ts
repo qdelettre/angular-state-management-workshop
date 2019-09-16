@@ -1,4 +1,9 @@
-import { selectTodos } from './todo.selectors';
+import {
+  selectEditedTodo,
+  selectTodoFilter,
+  selectTodos,
+  selectTodosCount
+} from './todo.selectors';
 import { initialState } from './todo.reducer';
 
 describe('Todo selectors', () => {
@@ -22,6 +27,32 @@ describe('Todo selectors', () => {
       expect(result.length).toBe(3);
       expect(result[0].title).toBe('Learn NgRx');
       expect(result[0].done).toBe(false);
+    });
+  });
+
+  describe('selectTodosCount', () => {
+    it('returns count of todos', () => {
+      const result = selectTodosCount.projector([]);
+      expect(result).toBe(0);
+    });
+  });
+
+  describe('selectTodoFilter', () => {
+    it('returns filter value', () => {
+      const result = selectTodoFilter.projector(initialState);
+      expect(result).toBe('ALL');
+    });
+  });
+
+  describe('selectEditedTodo', () => {
+    it('returns edited todo object', () => {
+      const result = selectEditedTodo.projector({
+        items: { abc: { id: 'abc', title: 'Test', done: false } },
+        editedTodoId: 'abc'
+      });
+      expect(result.id).toBe('abc');
+      expect(result.title).toBe('Test');
+      expect(result.done).toBe(false);
     });
   });
 });
