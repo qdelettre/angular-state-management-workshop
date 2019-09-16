@@ -6,7 +6,7 @@ import { createSpyObj } from 'jest-createspyobj';
 
 import { UserEffects } from './user.effects';
 import { UserIntegrationService } from '../services/user-integration.service';
-import { loadUsers } from './user.actions';
+import { loadUsers, loadUsersFailure, loadUsersSuccess } from './user.actions';
 
 describe('UserEffects', () => {
   let scheduler: TestScheduler;
@@ -49,10 +49,21 @@ describe('UserEffects', () => {
       userIntegrationServiceMock.load.mockReturnValue(cold('--a|', { a: [] }));
 
       expectObservable(effects.loadUsers$).toBe('----a', {
-        a: {
-          type: '[User API] Load Users Success',
-          users: []
-        }
+        a: loadUsersSuccess({ users: [] })
+      });
+    });
+  });
+
+  it('handles failed loading', () => {
+    scheduler.run(helpers => {
+      const { expectObservable, hot, cold } = helpers;
+
+      actions$ = hot('--a-', { a: loadUsers() });
+
+      userIntegrationServiceMock.load.mockReturnValue(cold('--#|'));
+
+      expectObservable(effects.loadUsers$).toBe('----a', {
+        a: loadUsersFailure({ error: 'Loading users failed: error' })
       });
     });
   });
@@ -71,10 +82,7 @@ describe('UserEffects', () => {
       );
 
       expectObservable(effects.loadUsers$).toBe('----a', {
-        a: {
-          type: '[User API] Load Users Success',
-          users: [{ id: 1, username: 'tester' }]
-        }
+        a: loadUsersSuccess({ users: [{ id: 1, username: 'tester' }] })
       });
     });
   });
