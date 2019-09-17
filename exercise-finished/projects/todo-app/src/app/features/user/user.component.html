@@ -1,0 +1,37 @@
+<h1>
+  User Admin
+</h1>
+
+<button
+  class="action-create-new-user"
+  mat-flat-button
+  color="primary"
+  *ngIf="!newUser"
+  (click)="createNewUser()"
+>
+  Create new user
+</button>
+
+<mat-spinner diameter="55" *ngIf="loading | async"></mat-spinner>
+<p class="error" *ngIf="error | async as errorMessage">{{ errorMessage }}</p>
+
+<todo-user-editor
+  *ngIf="newUser"
+  [user]="newUser"
+  (save)="createNewUserSave($event)"
+  (cancel)="createNewUserCancel()"
+></todo-user-editor>
+
+<todo-user-editor
+  *ngIf="usersEditedUser | async as editedUser"
+  [user]="editedUser"
+  (save)="editUserSave($event)"
+  (cancel)="editUserCancel()"
+></todo-user-editor>
+
+<todo-user-item
+  *ngFor="let user of users | async"
+  [user]="user"
+  (edit)="editUser($event)"
+  (remove)="removeUser($event)"
+></todo-user-item>

@@ -1,0 +1,11 @@
+<mat-card>
+  <p>
+    {{ user.name }} {{ user.surname }} <span>({{ user.username }})</span>
+  </p>
+  <button mat-icon-button color="accent" (click)="onEdit()">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-icon-button color="warn" (click)="onRemove()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</mat-card>

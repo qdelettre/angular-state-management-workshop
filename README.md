@@ -10,7 +10,7 @@ by [@tomastrajan](https://twitter.com/tomastrajan)
 - every exercise can be started using `npm start` to run the app
 - every exercise can start tests in watch mode using `npm run watch` (jest)
 - every exercise has it's own `README.md` file with additional description of the given exercise
-- every exercise project contains ordered `TODO` comments inside of the source code (eg `// TODO 1: description`) which should be followed to complete the given exercise
+- every exercise project contains ordered `// TODO` comments inside of the source code (eg `// TODO 1: description`) which should be followed to complete the given exercise
 
 
 ## Reference solution
