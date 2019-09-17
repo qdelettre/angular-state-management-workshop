@@ -1,0 +1,10 @@
+<mat-card [ngClass]="{ done: todo.done }">
+  <mat-checkbox [checked]="todo.done" (click)="onToggle()"></mat-checkbox>
+  <p (click)="onToggle()">{{ todo.title }}</p>
+  <button mat-icon-button color="accent" (click)="onEdit()">
+    <mat-icon>edit</mat-icon>
+  </button>
+  <button mat-icon-button color="warn" (click)="onRemove()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</mat-card>

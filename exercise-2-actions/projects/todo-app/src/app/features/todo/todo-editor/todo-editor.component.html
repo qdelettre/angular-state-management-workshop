@@ -1,0 +1,39 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Todo editor</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #form="ngForm">
+      <mat-form-field appearance="outline">
+        <mat-label>ID</mat-label>
+        <input matInput name="id" [(ngModel)]="editedTodo.id" disabled />
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input
+          matInput
+          name="todo"
+          placeholder="Eat some great cake..."
+          required
+          minlength="5"
+          [(ngModel)]="editedTodo.title"
+          #todo="ngModel"
+        />
+        <mat-error *ngIf="todo.touched && todo.invalid && todo.errors.required"
+          >Please provide todo description...</mat-error
+        >
+        <mat-error *ngIf="todo.touched && todo.invalid && todo.errors.minlength"
+          >Todo description has to have at least 5 characters...</mat-error
+        >
+      </mat-form-field>
+      <mat-checkbox name="done" [(ngModel)]="editedTodo.done"
+        >Done</mat-checkbox
+      >
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-flat-button color="primary" (click)="onSave(form)">Save</button>
+    <button mat-button (click)="onCancel()">Cancel</button>
+  </mat-card-actions>
+</mat-card>
