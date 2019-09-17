@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { todoFeatureKey, State } from './todo.reducer';
 
-const selectTodoFeature = createFeatureSelector<State>(todoFeatureKey);
+const selectTodoFeature = createFeatureSelector<State | any>(todoFeatureKey);
 
 export const selectTodoFilter = createSelector(
   selectTodoFeature,
@@ -21,7 +21,7 @@ export const selectTodos = createSelector(
       } else if (filter === 'ACTIVE') {
         return !item.done;
       }
-    })
+    }) as any[]
 );
 
 export const selectTodosCount = createSelector(

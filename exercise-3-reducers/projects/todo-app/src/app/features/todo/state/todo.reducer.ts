@@ -9,6 +9,7 @@ export const todoFeatureKey = '';
 
 // TODO 2: define and export "State" interface with "items" object consisting of "[id: string]" props and "Todo" values
 // "editedTodoId" which can be string or null and "todoFilter" of "TodoFilter" type
+export interface State {}
 
 // TODO 3: define and export "initialState" of type "State" with some default values
 // ( try to predefine IDs using uuid before to use them to create initial data )
