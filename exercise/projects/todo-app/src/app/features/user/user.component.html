@@ -12,7 +12,7 @@
   Create new user
 </button>
 
-<mat-spinner *ngIf="loading | async"></mat-spinner>
+<mat-spinner diameter="55" *ngIf="loading | async"></mat-spinner>
 <p class="error" *ngIf="error | async as errorMessage">{{ errorMessage }}</p>
 
 <todo-user-editor
