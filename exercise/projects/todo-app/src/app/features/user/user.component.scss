@@ -3,4 +3,16 @@
   flex-direction: column;
   align-items: center;
   padding: 40px 20%;
+  position: relative;
+
+  .action-create-new-user {
+    position: absolute;
+    top: 77px;
+    right: 20%;
+    margin: 0 10px 0 0;
+  }
+
+  .error {
+    color: #b80000;
+  }
 }

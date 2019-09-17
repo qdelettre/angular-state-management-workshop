@@ -9,9 +9,10 @@ import { UserEffects } from './state/user.effects';
 import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { UserItemComponent } from './user-item/user-item.component';
+import { UserEditorComponent } from './user-editor/user-editor.component';
 
 @NgModule({
-  declarations: [UserComponent, UserItemComponent],
+  declarations: [UserComponent, UserItemComponent, UserEditorComponent],
   imports: [
     SharedModule,
     UserRoutingModule,

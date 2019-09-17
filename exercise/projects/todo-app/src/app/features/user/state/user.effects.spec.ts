@@ -72,11 +72,17 @@ describe('UserEffects', () => {
         cold('------a|', { a: [] })
       );
       userIntegrationServiceMock.load.mockReturnValueOnce(
-        cold('---a|', { a: [{ id: 1, username: 'tester' }] })
+        cold('---a|', {
+          a: [{ id: 1, username: 'tester', name: 'Test', surname: 'Tester' }]
+        })
       );
 
       expectObservable(effects.loadUsers$).toBe('----a', {
-        a: loadUsersSuccess({ users: [{ id: 1, username: 'tester' }] })
+        a: loadUsersSuccess({
+          users: [
+            { id: 1, username: 'tester', name: 'Test', surname: 'Tester' }
+          ]
+        })
       });
     });
   });

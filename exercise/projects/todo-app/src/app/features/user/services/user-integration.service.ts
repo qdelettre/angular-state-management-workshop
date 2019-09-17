@@ -16,12 +16,12 @@ export class UserIntegrationService {
     return this.httpClient.get<User[]>(API_URL);
   }
 
-  create(userToCreate: Partial<User>): Observable<void> {
-    return this.httpClient.post<void>(API_URL, userToCreate);
+  create(userToCreate: Partial<User>): Observable<User> {
+    return this.httpClient.post<User>(API_URL, userToCreate);
   }
 
-  update(userToUpdate: Partial<User>): Observable<void> {
-    return this.httpClient.put<void>(
+  update(userToUpdate: User): Observable<User> {
+    return this.httpClient.put<User>(
       `${API_URL}/${userToUpdate.id}`,
       userToUpdate
     );

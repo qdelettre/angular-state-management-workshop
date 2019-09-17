@@ -28,3 +28,40 @@ export const removeUserFailure = createAction(
   '[User API] Remove User Failure',
   props<{ error: string }>()
 );
+
+export const createUser = createAction(
+  '[User Page] Create User',
+  props<{ username: string; name: string; surname: string }>()
+);
+
+export const createUserSuccess = createAction(
+  '[User API] Create User Success',
+  props<User>()
+);
+
+export const createUserFailure = createAction(
+  '[User API] Create User Failure',
+  props<{ error: string }>()
+);
+
+export const editUser = createAction(
+  '[User Page] Edit User',
+  props<{ id: number }>()
+);
+
+export const editUserCancel = createAction('[User Page] Edit User Cancel');
+
+export const editUserSave = createAction(
+  '[User Page] Edit User Save',
+  props<User>()
+);
+
+export const editUserSaveSuccess = createAction(
+  '[User API] Edit User Success',
+  props<User>()
+);
+
+export const editUserSaveFailure = createAction(
+  '[User API] Edit User Failure',
+  props<{ error: string }>()
+);

@@ -18,3 +18,8 @@ export const selectUsersError = createSelector(
   selectUserFeature,
   user => user.error
 );
+
+export const selectEditedUser = createSelector(
+  selectUserFeature,
+  user => user.items[user.editedUserId]
+);

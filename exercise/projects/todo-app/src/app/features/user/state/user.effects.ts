@@ -31,6 +31,42 @@ export class UserEffects {
     )
   );
 
+  createUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UserActions.createUser),
+      concatMap(({ username, name, surname }) =>
+        this.userIntegrationService.create({ username, name, surname }).pipe(
+          map(user => UserActions.createUserSuccess(user)),
+          catchError(error =>
+            of(
+              UserActions.createUserFailure({
+                error: `Create user failed: ${error}`
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+
+  createEdit$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(UserActions.editUserSave),
+      concatMap(userToUpdate =>
+        this.userIntegrationService.update(userToUpdate).pipe(
+          map(user => UserActions.editUserSaveSuccess(user)),
+          catchError(error =>
+            of(
+              UserActions.editUserSaveFailure({
+                error: `Edit user failed: ${error}`
+              })
+            )
+          )
+        )
+      )
+    )
+  );
+
   removeUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.removeUser),

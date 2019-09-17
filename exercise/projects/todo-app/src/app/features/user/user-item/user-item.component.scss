@@ -14,6 +14,10 @@
       cursor: pointer;
       user-select: none;
       margin: 0;
+
+      span {
+        opacity: 0.5;
+      }
     }
 
     button {

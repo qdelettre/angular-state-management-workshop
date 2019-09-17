@@ -2,19 +2,27 @@
   "users": [
     {
       "id": 1,
-      "username": "johnsnow"
+      "username": "johnsnow",
+      "name": "John",
+      "surname": "Snow"
     },
     {
       "id": 2,
-      "username": "tyrionlanister"
+      "username": "tyrionlanister",
+      "name": "Tyrion",
+      "surname": "Lanister"
     },
     {
       "id": 3,
-      "username": "ramsaybolton"
+      "username": "ramsaybolton",
+      "name": "Ramsay",
+      "surname": "Bolton"
     },
     {
       "id": 4,
-      "username": "sansastark"
+      "username": "sansastark",
+      "name": "Sansa",
+      "surname": "Stark"
     }
   ]
 }

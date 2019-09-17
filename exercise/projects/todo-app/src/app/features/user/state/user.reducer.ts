@@ -50,6 +50,72 @@ const userReducer = createReducer(
     editedUserId: null
   })),
 
+  on(UserActions.createUser, state => ({
+    ...state,
+    loading: true,
+    error: null,
+    editedUserId: null
+  })),
+
+  on(
+    UserActions.createUserSuccess,
+    (state, { id, username, name, surname }) => ({
+      ...state,
+      items: {
+        ...state.items,
+        [id]: { id, username, name, surname }
+      },
+      loading: false,
+      error: null,
+      editedUserId: null
+    })
+  ),
+
+  on(UserActions.createUserFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+    editedUserId: null
+  })),
+
+  on(UserActions.editUser, (state, { id }) => ({
+    ...state,
+    editedUserId: id
+  })),
+
+  on(UserActions.editUserCancel, state => ({
+    ...state,
+    editedUserId: null
+  })),
+
+  on(UserActions.editUserSave, state => ({
+    ...state,
+    loading: true,
+    error: null,
+    editedUserId: null
+  })),
+
+  on(
+    UserActions.editUserSaveSuccess,
+    (state, { id, name, surname, username }) => ({
+      ...state,
+      items: {
+        ...state.items,
+        [id]: { id, name, surname, username }
+      },
+      loading: false,
+      error: null,
+      editedUserId: null
+    })
+  ),
+
+  on(UserActions.editUserSaveFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error,
+    editedUserId: null
+  })),
+
   on(UserActions.removeUser, state => ({
     ...state,
     loading: true,

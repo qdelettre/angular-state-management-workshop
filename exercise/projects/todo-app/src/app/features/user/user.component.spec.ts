@@ -6,6 +6,7 @@ import { SharedModule } from '../../shared/shared.module';
 
 import { UserComponent } from './user.component';
 import { UserItemComponent } from './user-item/user-item.component';
+import { UserEditorComponent } from './user-editor/user-editor.component';
 
 describe('UserComponent', () => {
   let component: UserComponent;
@@ -15,7 +16,7 @@ describe('UserComponent', () => {
     TestBed.configureTestingModule({
       imports: [NoopAnimationsModule, SharedModule],
       providers: [provideMockStore()],
-      declarations: [UserComponent, UserItemComponent]
+      declarations: [UserComponent, UserItemComponent, UserEditorComponent]
     }).compileComponents();
   }));
 

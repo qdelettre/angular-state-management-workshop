@@ -22,3 +22,10 @@ working solution for every previous exercise
 
 - `a` - to run all tests
 - `w` followed by `p` - to run only specific files (regexp, eg `todo.comp` will run `todo.component.spec.ts` file)
+
+
+## Effects (backend requests)
+
+- the `npm start` starts both frontend and simple backend which serves `db.json` file (as CRUD json API)
+- performing backend requests (with effects) will change content of that file
+- the content can be "reset" by comping content from `db-backup.json` file into `db.json` file
