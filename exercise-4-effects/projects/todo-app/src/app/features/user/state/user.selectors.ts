@@ -23,3 +23,9 @@ export const selectEditedUser = createSelector(
   selectUserFeature,
   user => user.items[user.editedUserId]
 );
+
+
+export const selectIsAdmin = createSelector(
+  selectUserFeature,
+  user => user.isAdmin
+);

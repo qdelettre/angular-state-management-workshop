@@ -11,13 +11,15 @@ export interface State {
   loading: boolean;
   error: string | null;
   editedUserId: number | null;
+  isAdmin: boolean;
 }
 
 export const initialState: State = {
   items: {},
   loading: false,
   error: null,
-  editedUserId: null
+  editedUserId: null,
+  isAdmin: true
 };
 
 const userReducer = createReducer(

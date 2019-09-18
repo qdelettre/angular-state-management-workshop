@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 import { User } from '../state/user.model';
 
@@ -12,7 +12,10 @@ const API_URL = 'http://localhost:3000/users';
 export class UserIntegrationService {
   constructor(private httpClient: HttpClient) {}
 
-  load(): Observable<User[]> {
+  load(isAdmin?: boolean): Observable<User[]> {
+    if (isAdmin) {
+      return of([{ id: 1000, username: 'admin', name: 'Admin', surname: 'Adminovsky' }]);
+    }
     return this.httpClient.get<User[]>(API_URL);
   }
 

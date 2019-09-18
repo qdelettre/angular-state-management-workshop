@@ -6,7 +6,11 @@ by [@tomastrajan](https://twitter.com/tomastrajan)
 
 In this exercise were going to explore how to implement and use effects
 
-- ...
+- Implement effect service
+- Implement backend API call using effect
+- Retrieve store state to be used in the effect
+- Explore how and where to do error handling
+- Explore how dead streams are handled in NgRx 8
 
 
 ## How to start
