@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "johnsnow",
+      "name": "John",
+      "surname": "Snow"
+    },
+    {
+      "id": 2,
+      "username": "tyrionlanister",
+      "name": "Tyrion",
+      "surname": "Lanister"
+    },
+    {
+      "id": 3,
+      "username": "ramsaybolton",
+      "name": "Ramsay",
+      "surname": "Bolton"
+    },
+    {
+      "id": 4,
+      "username": "sansastark",
+      "name": "Sansa",
+      "surname": "Stark"
+    }
+  ]
+}
