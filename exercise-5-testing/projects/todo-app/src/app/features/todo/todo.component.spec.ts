@@ -34,10 +34,10 @@ describe('TodoComponent', () => {
   const getTodoItems = () =>
     fixture.debugElement.queryAll(By.css('todo-todo-item'));
 
-  const getTodoItemText = (index: number) =>
+  const getTodoItemText = (todoItemIndex: number) =>
     fixture.debugElement
       .queryAll(By.css('todo-todo-item'))
-      [index].query(By.css('p')).nativeElement.textContent;
+      [todoItemIndex].query(By.css('p')).nativeElement.textContent;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -53,41 +53,22 @@ describe('TodoComponent', () => {
     store = TestBed.get<Store<{}>>(Store);
   });
 
-  it('should render todos', () => {
-    store.overrideSelector(selectTodos, [
-      { id: '1', title: 'Test 1', done: true },
-      { id: '2', title: 'Test 2', done: false }
-    ]);
-    store.overrideSelector(selectTodosCount, 2);
-    store.overrideSelector(selectTodoFilter, 'ALL');
-    store.overrideSelector(selectEditedTodo, null);
-    fixture.detectChanges();
+  it('should render todo correct todo items', () => {
+    // TODO 6: implement component test (override all selectors used in component with some test data and call "fixture.detectChanges")
+    // use helper functions like "getTodoItems()" (find them at the top of the test) to check if component rendered the state corectly
+    // eg: correct count of rendered todo items, todo item text, correct filter description based on filter value, ...
 
-    expect(getTodoItems().length).toBe(2);
-    expect(getTodoItemText(0)).toBe('Test 1');
-    expect(getDescription()).toBe('Displaying all todos');
-    expect(getCount()).toBe('2');
+
   });
 
-  it('displays correct description based on filter', () => {
-    store.overrideSelector(selectTodos, []);
-    store.overrideSelector(selectTodosCount, 2);
-    store.overrideSelector(selectTodoFilter, 'DONE');
-    store.overrideSelector(selectEditedTodo, null);
-    fixture.detectChanges();
+  it('displays correct description based on filter: "DONE"', () => {
 
-    expect(getDescription()).toBe('Displaying done todos');
-    expect(getCount()).toBe('2');
+    // TODO 7: implement all todo component tests
+
   });
 
-  it('displays correct description based on filter', () => {
-    store.overrideSelector(selectTodos, []);
-    store.overrideSelector(selectTodosCount, 2);
-    store.overrideSelector(selectTodoFilter, 'ACTIVE');
-    store.overrideSelector(selectEditedTodo, null);
-    fixture.detectChanges();
+  it('displays correct description based on filter: "ACTIVE"', () => {
 
-    expect(getDescription()).toBe('Displaying active todos');
-    expect(getCount()).toBe('2');
+
   });
 });
