@@ -32,5 +32,8 @@ export const removeDoneTodos = undefined;
 export const filterTodos = undefined;
 
 // TODO 9: create "addTodoWithId" action using CUSTOM action factory method (prop) => payload
-// the factory with accept title (text of the to-do) but the resulting payload will also contain generated "id" (using uuid)
+// the factory with accept title (text of the to-do) but the resulting payload will be an object with both "title" and "id" properties (id is generated using uuid)
 export const addTodoWithId = undefined;
+
+
+// there are further TODO comments in todo.component.ts, please continue there...

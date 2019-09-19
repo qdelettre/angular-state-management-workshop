@@ -1,8 +1,9 @@
 import uuid from 'uuid/v4';
-import { Action, createReducer, on } from '@ngrx/store';
+import { Action, createAction, createReducer, on } from '@ngrx/store';
 
 import * as TodoActions from './todo.actions';
 import { Todo, TodoFilter } from './todo.model';
+export const noopAction = createAction('[Exercise Helper] Noop') as any;
 
 export const todoFeatureKey = 'todo';
 
@@ -37,7 +38,7 @@ export const initialState: State = {
 const todoReducer = createReducer(
   initialState,
 
-  on(TodoActions.addTodo || { type: 'dummy' }, (state, { title }) => {
+  on(TodoActions.addTodo || noopAction, (state, { title }) => {
     const id = uuid();
     return {
       ...state,
@@ -52,7 +53,7 @@ const todoReducer = createReducer(
     };
   }),
 
-  on(TodoActions.toggleTodo || { type: 'dummy' }, (state, { id }) => {
+  on(TodoActions.toggleTodo || noopAction, (state, { id }) => {
     const todo = state.items[id];
     return {
       ...state,
@@ -66,7 +67,7 @@ const todoReducer = createReducer(
     };
   }),
 
-  on(TodoActions.removeTodo || { type: 'dummy' }, (state, { id }) => {
+  on(TodoActions.removeTodo || noopAction, (state, { id }) => {
     const newState = {
       ...state,
       items: {
@@ -80,7 +81,7 @@ const todoReducer = createReducer(
     return newState;
   }),
 
-  on(TodoActions.removeDoneTodos || { type: 'dummy' }, state => {
+  on(TodoActions.removeDoneTodos || noopAction, state => {
     const notDoneIds = Object.values(state.items)
       .filter(item => !item.done)
       .map(item => item.id);
@@ -93,22 +94,22 @@ const todoReducer = createReducer(
     };
   }),
 
-  on(TodoActions.filterTodos || { type: 'dummy' }, (state, { filter }) => ({
+  on(TodoActions.filterTodos || noopAction, (state, { filter }) => ({
     ...state,
     todoFilter: filter
   })),
 
-  on(TodoActions.editTodo || { type: 'dummy' }, (state, { id }) => ({
+  on(TodoActions.editTodo || noopAction, (state, { id }) => ({
     ...state,
     editedTodoId: id
   })),
 
-  on(TodoActions.cancelEditTodo || { type: 'dummy' }, state => ({
+  on(TodoActions.cancelEditTodo || noopAction, state => ({
     ...state,
     editedTodoId: null
   })),
 
-  on(TodoActions.updateTodo || { type: 'dummy' }, (state, { todo }) => ({
+  on(TodoActions.updateTodo || noopAction, (state, { todo }) => ({
     ...state,
     items: {
       ...state.items,
