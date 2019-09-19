@@ -25,8 +25,9 @@ describe('Todo Reducer', () => {
     it('should add todo', () => {
 
       // TODO 2: add reducer test for handler that handles "addTodo" action by creating action and applying it to reducer
+      // resulting state should contain new todo with specified title
 
-      // TODO 3: try to implement as many reducer tests...
+
 
     });
   });
@@ -34,7 +35,7 @@ describe('Todo Reducer', () => {
   describe('toggle todo action', () => {
     it('should toggle todo', () => {
 
-
+      // TODO 3: implement all reducer tests
 
     });
   });

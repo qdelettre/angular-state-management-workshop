@@ -28,7 +28,7 @@ export class UserEffects {
 
   // TODO 7: in case of error, handle the error and return "loadUsersFailure"
 
-  // let's review what you have until now together
+  // let's review what you have until now together, also the 8th step is in user.module.ts file
 
   // TODO 9: implement steps 1 - 7 for "createUser$" effect (works very similarly, mind using correct flattening stream operator)
   createUser$ = undefined;

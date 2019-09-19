@@ -45,7 +45,7 @@ export class TodoComponent implements OnInit {
 
   addTodo(form: NgForm) {
     if (form.valid) {
-      // TODO 9: dispatch appropriate action with correct payload to create new todo item (the input is stored in "this.newTodoTitle")
+      // TODO 10: dispatch appropriate action with correct payload to create new todo item (the input is stored in "this.newTodoTitle")
 
       this.newTodoTitle = '';
       form.resetForm();
@@ -54,32 +54,32 @@ export class TodoComponent implements OnInit {
   }
 
   toggleTodo(id: string) {
-    // TODO 10: dispatch appropriate action with correct payload to toggle done status of the todo item
+    // TODO 11: dispatch appropriate action with correct payload to toggle done status of the todo item
   }
 
   editTodo(id: string) {
-    // TODO 11: dispatch appropriate action with correct payload to select todo item for editing
+    // TODO 12: dispatch appropriate action with correct payload to select todo item for editing
   }
 
   cancelEditTodo() {
-    // TODO 12: dispatch appropriate action with correct payload to de-select todo item for editing
+    // TODO 13: dispatch appropriate action with correct payload to de-select todo item for editing
   }
 
   saveEditTodo(todo: Todo) {
-    // TODO 13: dispatch appropriate action with correct payload to save edited todo
+    // TODO 14: dispatch appropriate action with correct payload to save edited todo
   }
 
   removeTodo(id: string) {
-    // TODO 14: dispatch appropriate action with correct payload to remove todo item
+    // TODO 15: dispatch appropriate action with correct payload to remove todo item
   }
 
   removeDoneTodos() {
-    // TODO 15: dispatch appropriate action with correct payload to remove all done todo items
+    // TODO 16: dispatch appropriate action with correct payload to remove all done todo items
   }
 
   setTodoFilter(filter: TodoFilter) {
-    // TODO 146: dispatch appropriate action with correct payload to update filter value
+    // TODO 17: dispatch appropriate action with correct payload to update filter value
   }
 
-  // TODO 17: try to run npm run watch to run the tests and see if the tests are passing now
+  // TODO 18: try to run npm run watch to run the tests and see if the tests are passing now
 }
