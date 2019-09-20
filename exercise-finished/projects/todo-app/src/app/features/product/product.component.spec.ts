@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideMockStore } from '@ngrx/store/testing';
+
+import { SharedModule } from '../../shared/shared.module';
 
 import { ProductComponent } from './product.component';
+import { ProductItemComponent } from './product-item/product-item.component';
+import { ProductEditorComponent } from './product-editor/product-editor.component';
 
 describe('ProductComponent', () => {
   let component: ProductComponent;
@@ -8,9 +14,14 @@ describe('ProductComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProductComponent ]
-    })
-    .compileComponents();
+      imports: [NoopAnimationsModule, SharedModule],
+      providers: [provideMockStore()],
+      declarations: [
+        ProductComponent,
+        ProductItemComponent,
+        ProductEditorComponent
+      ]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

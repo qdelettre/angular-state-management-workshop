@@ -9,7 +9,9 @@ describe('ProductIntegrationService', () => {
   );
 
   it('should be created', () => {
-    const service: ProductIntegrationService = TestBed.get(ProductIntegrationService);
+    const service: ProductIntegrationService = TestBed.get(
+      ProductIntegrationService
+    );
     expect(service).toBeTruthy();
   });
 });

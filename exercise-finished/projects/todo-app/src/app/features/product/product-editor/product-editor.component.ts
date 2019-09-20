@@ -1,8 +1,14 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 import { Product } from '../state/product.model';
-
 
 @Component({
   selector: 'todo-product-editor',

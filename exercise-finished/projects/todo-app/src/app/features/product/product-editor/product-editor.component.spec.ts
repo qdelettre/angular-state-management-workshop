@@ -12,9 +12,8 @@ describe('ProductEditorComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [NoopAnimationsModule, SharedModule],
-      declarations: [ ProductEditorComponent ]
-    })
-    .compileComponents();
+      declarations: [ProductEditorComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {select, Store} from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import { Product } from './state/product.model';
@@ -72,5 +72,4 @@ export class ProductComponent implements OnInit {
   removeProduct(id: number) {
     this.store.dispatch(removeProduct({ id }));
   }
-
 }
