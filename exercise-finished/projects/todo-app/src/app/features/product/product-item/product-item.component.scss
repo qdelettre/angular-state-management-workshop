@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  width: 100%;
+
+  mat-card {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    height: 42px;
+    padding: 5px 15px;
+
+    p {
+      flex: 1 0 auto;
+      cursor: pointer;
+      user-select: none;
+      margin: 0;
+    }
+
+    button {
+      display: none;
+    }
+
+    &:hover {
+      button {
+        display: block;
+      }
+    }
+  }
+}
