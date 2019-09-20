@@ -57,18 +57,24 @@ const productReducer = createReducer(
     })
   ),
 
+  on(
+    ProductActions.loadProductsFailure,
+    ProductActions.createProductFailure,
+    ProductActions.updateProductFailure,
+    ProductActions.removeProductFailure,
+    (state, { error }) => ({
+      ...state,
+      editedProductId: null,
+      loading: false,
+      error
+    })
+  ),
+
   on(ProductActions.loadProductsSuccess, (state, { products }) => ({
     ...adapter.addAll(products, state),
     editedProductId: null,
     loading: false,
     error: null
-  })),
-
-  on(ProductActions.loadProductsFailure, (state, { error }) => ({
-    ...state,
-    editedProductId: null,
-    loading: false,
-    error
   })),
 
   on(ProductActions.createProductSuccess, (state, { product }) => ({
@@ -78,13 +84,6 @@ const productReducer = createReducer(
     error: null
   })),
 
-  on(ProductActions.createProductFailure, (state, { error }) => ({
-    ...state,
-    editedProductId: null,
-    loading: false,
-    error
-  })),
-
   on(ProductActions.updateProductSuccess, (state, { product }) => ({
     ...adapter.updateOne(product, state),
     editedProductId: null,
@@ -92,25 +91,11 @@ const productReducer = createReducer(
     error: null
   })),
 
-  on(ProductActions.updateProductFailure, (state, { error }) => ({
-    ...state,
-    editedProductId: null,
-    loading: false,
-    error
-  })),
-
   on(ProductActions.removeProductSuccess, (state, { id }) => ({
     ...adapter.removeOne(id, state),
     editedProductId: null,
     loading: false,
     error: null
-  })),
-
-  on(ProductActions.removeProductFailure, (state, { error }) => ({
-    ...state,
-    editedProductId: null,
-    loading: false,
-    error
   }))
 );
 
