@@ -1,0 +1,50 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "johnsnow",
+      "name": "John",
+      "surname": "Snow"
+    },
+    {
+      "id": 2,
+      "username": "tyrionlanister",
+      "name": "Tyrion",
+      "surname": "Lanister"
+    },
+    {
+      "id": 3,
+      "username": "ramsaybolton",
+      "name": "Ramsay",
+      "surname": "Bolton"
+    },
+    {
+      "id": 4,
+      "username": "sansastark",
+      "name": "Sansa",
+      "surname": "Stark"
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Pencil",
+      "description": "Can be used to write in zero gravity"
+    },
+    {
+      "id": 2,
+      "name": "Yellow Rubber Duck",
+      "description": "Great for bathtub or basically anywhere"
+    },
+    {
+      "id": 3,
+      "name": "Cat collar",
+      "description": "Let your cat take you out for a walk"
+    },
+    {
+      "id": 4,
+      "name": "Coffee cup",
+      "description": "Because nothing is better than coffee at midnight"
+    }
+  ]
+}
