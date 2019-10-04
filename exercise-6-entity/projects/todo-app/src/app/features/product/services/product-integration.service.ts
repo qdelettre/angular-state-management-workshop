@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { Product } from '../state/product.model';
 
-const API_URL = 'http://localhost:3000/products';
+const API_URL = 'http://localhost:4300/products';
 
 @Injectable({
   providedIn: 'root'
