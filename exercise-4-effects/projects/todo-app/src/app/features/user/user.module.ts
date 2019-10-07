@@ -17,7 +17,8 @@ import { UserEditorComponent } from './user-editor/user-editor.component';
     SharedModule,
     UserRoutingModule,
     StoreModule.forFeature(fromUser.userFeatureKey, fromUser.reducer),
-    // TODO 8: import "EffectsModule.forFeature" and pass in "UserEffects" as an array
+    // TODO 8: import "EffectsModule.forFeature" and pass in "UserEffects" as an only item in an array
+    // now check the running application, it should display items from the backend
   ]
 })
 export class UserModule {}
