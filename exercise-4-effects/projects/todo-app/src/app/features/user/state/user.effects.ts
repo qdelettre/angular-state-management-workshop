@@ -24,9 +24,9 @@ export class UserEffects {
 
   // TODO 5: make a "load" request using "userIntegrationService" which returns an array of users
 
-  // TODO 6: in case of success, map the response into "loadUsersSuccess"
+  // TODO 6: in case of success, map the response into "loadUsersSuccess" (in nested pipe)
 
-  // TODO 7: in case of error, handle the error and return "loadUsersFailure"
+  // TODO 7: in case of error, handle the error using "catchError" and return Observable ( of() )"loadUsersFailure"
 
   // let's review what you have until now together, also the 8th step is in user.module.ts file
 
@@ -38,8 +38,6 @@ export class UserEffects {
 
   // TODO 11: implement steps 1 - 7 for "removeUser$" effect (works very similarly, mind using correct flattening stream operator)
   removeUser$ = undefined;
-
-
 
   // TODO 12: for "loadUsers$": inject store into the service
 
@@ -53,13 +51,14 @@ export class UserEffects {
 
   // TODO 18: for "loadUsers$": pass "isAdmin" into the integration service "load()" method
 
+  // TODO 19: let's explore what would happen if we make backend request fail (we can use "throwError" instead of service call) and comment out "catchError" handler
 
+  // TODO 20: now try to add "{ resubscribeOnError: false }" as a second parameter of "createEffect" and try to create couple of user
 
-  // TODO 19: let's explore what would happen if we make backend request fail (we can use "throwError" instead of service call) depending on the "catchError" location
+  // this demonstrates how NgRx 8 by default re-subscribes failed streams to perform subsequent requests instead of finishing effect stream
+  // but it's still very important to properly handle errors in NESTED streams ( .pipe() on the service call )
 
-  // TODO 20: try to move "catchError" to the "top-level stream" while making it fail (for create user) and try to create couple of user
-
-  // TODO 21: now try to add "{ resubscribeOnError: false }" as a second parameter of "createEffect" and try to create couple of user
-
-  // this demonstrates why it is important to  properly handle errors in a nested stream instead of top level stream
+  // try to move error handling login to the top level stream
+  // the stream will be completed because we use "of()" operator which emits value and completes which will complete
+  // whole effect stream, that way no subsequent request will be performed which is something WE DO NOT WANT
 }
