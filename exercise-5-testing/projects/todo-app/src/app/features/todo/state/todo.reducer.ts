@@ -52,6 +52,20 @@ const todoReducer = createReducer(
     };
   }),
 
+  on(TodoActions.addTodoWithId, (state, { id, title }) => {
+    return {
+      ...state,
+      items: {
+        ...state.items,
+        [id]: {
+          id,
+          title,
+          done: false
+        }
+      }
+    };
+  }),
+
   on(TodoActions.toggleTodo, (state, { id }) => {
     const todo = state.items[id];
     return {
