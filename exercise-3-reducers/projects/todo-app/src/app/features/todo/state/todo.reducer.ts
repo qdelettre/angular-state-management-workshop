@@ -34,7 +34,7 @@ const todoReducer = undefined;
   // the 8th step is at the end of this file
 
 
-  // TODO 10: implement "on" handlers for all other actions (addTodo, toggleTodo, removeTodo, editTodo, cancelEditTodo, updateTodo, removeDoneTodos)
+  // TODO 10: implement "on" handlers for all other actions (addTodoWithId, toggleTodo, removeTodo, editTodo, cancelEditTodo, updateTodo, removeDoneTodos)
   // try to implement all of them while exploring different ways of creating new state using immutable approach
 
 

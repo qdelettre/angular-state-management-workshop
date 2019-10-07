@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 import {
-  addTodo,
+  addTodoWithId,
   cancelEditTodo,
   editTodo,
   filterTodos,
@@ -45,7 +45,7 @@ export class TodoComponent implements OnInit {
 
   addTodo(form: NgForm) {
     if (form.valid) {
-      this.store.dispatch(addTodo({ title: this.newTodoTitle }));
+      this.store.dispatch(addTodoWithId(this.newTodoTitle));
       this.newTodoTitle = '';
       form.resetForm();
       form.reset();
