@@ -19,7 +19,9 @@ export class ProductEffects {
       switchMap(() =>
         this.productIntegrationService.load().pipe(
           map(products => ProductActions.loadProductsSuccess({ products })),
-          catchError(error => of(ProductActions.loadProductsFailure({ error })))
+          catchError(error =>
+            of(ProductActions.loadProductsFailure({ error: error.toString() }))
+          )
         )
       )
     )
@@ -34,7 +36,7 @@ export class ProductEffects {
             ProductActions.createProductSuccess({ product: newProduct })
           ),
           catchError(error =>
-            of(ProductActions.createProductFailure({ error }))
+            of(ProductActions.createProductFailure({ error: error.toString() }))
           )
         )
       )
@@ -52,7 +54,7 @@ export class ProductEffects {
             })
           ),
           catchError(error =>
-            of(ProductActions.updateProductFailure({ error }))
+            of(ProductActions.updateProductFailure({ error: error.toString() }))
           )
         )
       )
@@ -66,7 +68,7 @@ export class ProductEffects {
         this.productIntegrationService.remove(id).pipe(
           map(() => ProductActions.removeProductSuccess({ id })),
           catchError(error =>
-            of(ProductActions.removeProductFailure({ error }))
+            of(ProductActions.removeProductFailure({ error: error.toString() }))
           )
         )
       )
