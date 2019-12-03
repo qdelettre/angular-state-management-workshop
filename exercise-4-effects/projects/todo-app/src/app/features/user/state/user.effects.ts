@@ -55,8 +55,8 @@ export class UserEffects {
   // TODO 9: implement steps 1 - 7 for "createUser$" effect (works very similarly, mind using correct flattening stream operator)
   createUser$ = undefined;
 
-  // TODO 10: implement steps 1 - 7 for "editUser$" effect (works very similarly, mind using correct flattening stream operator)
-  editUser$ = undefined;
+  // TODO 10: implement steps 1 - 7 for "editUserSave$" effect (works very similarly, mind using correct flattening stream operator)
+  editUserSave$ = undefined;
 
   // TODO 11: implement steps 1 - 7 for "removeUser$" effect (works very similarly, mind using correct flattening stream operator)
   removeUser$ = undefined;
