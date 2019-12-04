@@ -1,7 +1,7 @@
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Store } from '@ngrx/store';
+import { MemoizedSelector, Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { SharedModule } from '../../shared/shared.module';
@@ -12,6 +12,8 @@ import {
   selectTodoFilter,
   selectEditedTodo
 } from './state/todo.selectors';
+import { Todo } from './state/todo.model';
+import { State } from './state/todo.reducer';
 import { TodoComponent } from './todo.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodoEditorComponent } from './todo-editor/todo-editor.component';
@@ -52,8 +54,10 @@ describe('TodoComponent', () => {
     component = fixture.componentInstance;
     store = TestBed.get<Store<{}>>(Store);
 
-    // TODO 6: implement component test (override all selectors used in component with some test data and call "fixture.detectChanges")
+    // TODO 6: override all selectors used in component with some test data and call "fixture.detectChanges")
     // when overriding selectors, assign overridden selector to a variable (eg "mockSelectTodos") which will be declared at the top of the test and re-assigned for every new test in before each
+    // the selector variable will be of typed based on what it hsould return
+    // eg "MemoizedSelector<State, string>" for mockSelectTodoFilter
 
   });
 
