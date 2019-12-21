@@ -7,7 +7,7 @@
     "serve:api": "json-server --watch db.json --delay 500 --port 4300",
     "build": "ng build --prod",
     "test": "npm run format:test && ng lint && ng test",
-    "watch": "ng test --watch",
+    "watch": "ng test --watchAll",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format:write": "prettier projects/**/*.{js,ts,json,html,scss,md} --write",

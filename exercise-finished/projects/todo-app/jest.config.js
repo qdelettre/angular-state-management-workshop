@@ -4,7 +4,7 @@ module.exports = {
     'jest-preset-angular/AngularSnapshotSerializer.js',
     'jest-preset-angular/HTMLCommentSerializer.js'
   ],
-  coverage: true,
+  collectCoverage: true,
   coverageReporters: ['text-summary'],
   transformIgnorePatterns: ['^.+\\.js$'],
 };
