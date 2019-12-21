@@ -4,7 +4,7 @@ module.exports = {
     'jest-preset-angular/AngularSnapshotSerializer.js',
     'jest-preset-angular/HTMLCommentSerializer.js'
   ],
+  coverage: true,
   coverageReporters: ['text-summary'],
-  testMatch: ["**/?(*.)+(spec).ts"],
-  testPathIgnorePatterns: ['.*e2e-spec.ts$']
+  transformIgnorePatterns: ['^.+\\.js$'],
 };
