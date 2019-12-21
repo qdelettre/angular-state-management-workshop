@@ -6,5 +6,5 @@ module.exports = {
   ],
   collectCoverage: true,
   coverageReporters: ['text-summary'],
-  transformIgnorePatterns: ['^.+\\.js$'],
+  transformIgnorePatterns: ['^.+\\.js$']
 };
