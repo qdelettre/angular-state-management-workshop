@@ -72,12 +72,7 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "projects/todo-app/jest-config.js",
-            "tsConfig": "projects/todo-app/tsconfig.spec.json",
-            "codeCoverage": true
-          }
+          "builder": "@angular-builders/jest:run"
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
