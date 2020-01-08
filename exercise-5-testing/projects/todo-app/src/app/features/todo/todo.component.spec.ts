@@ -74,6 +74,7 @@ describe('TodoComponent', () => {
     // some tests need other data than provided in the "beforeEach" with "overrideSelector"
     // in that case we can previously stored overridden selector (eg "mockSelectTodos")
     // and use "setResult()" method followed by the "store.refreshState()" and "fixture.detectChanges()"
+    // this will only have impact on the printed label as data was mocked by other selectors (use provided "getDescription()" method to check for the rendered label)
 
   });
 
