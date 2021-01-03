@@ -33,7 +33,7 @@ describe('UserEffects', () => {
       ]
     });
 
-    effects = TestBed.get<UserEffects>(UserEffects);
+    effects = TestBed.inject(UserEffects);
   });
 
   it('should be created', () => {
