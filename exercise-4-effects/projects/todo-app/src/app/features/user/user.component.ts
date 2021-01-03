@@ -63,7 +63,7 @@ export class UserComponent implements OnInit {
   }
 
   editUserSave(user: User) {
-    this.store.dispatch(editUserSave(user));
+    this.store.dispatch(editUserSave({ user }));
   }
 
   editUserCancel() {
