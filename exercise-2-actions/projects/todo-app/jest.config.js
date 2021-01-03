@@ -1,10 +1,5 @@
 module.exports = {
-  name: 'todo-app',
-  snapshotSerializers: [
-    'jest-preset-angular/AngularSnapshotSerializer.js',
-    'jest-preset-angular/HTMLCommentSerializer.js'
-  ],
-  collectCoverage: true,
-  coverageReporters: ['text-summary'],
-  transformIgnorePatterns: ['^.+\\.js$']
+  preset: 'jest-preset-angular',
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+  coverageReporters: ['text-summary']
 };

@@ -1,6 +1,6 @@
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
@@ -19,7 +19,7 @@ import { TodoEditorComponent } from './todo-editor/todo-editor.component';
 describe('TodoComponent', () => {
   let component: TodoComponent;
   let fixture: ComponentFixture<TodoComponent>;
-  let store: MockStore<{}>;
+  let store: MockStore;
 
   const getCount = () =>
     fixture.debugElement
@@ -39,18 +39,20 @@ describe('TodoComponent', () => {
       .queryAll(By.css('todo-todo-item'))
       [index].query(By.css('p')).nativeElement.textContent;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, SharedModule],
-      providers: [provideMockStore()],
-      declarations: [TodoComponent, TodoItemComponent, TodoEditorComponent]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NoopAnimationsModule, SharedModule],
+        providers: [provideMockStore()],
+        declarations: [TodoComponent, TodoItemComponent, TodoEditorComponent]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TodoComponent);
     component = fixture.componentInstance;
-    store = TestBed.get<Store<{}>>(Store);
+    store = TestBed.inject(MockStore);
   });
 
   it('should render todos', () => {
