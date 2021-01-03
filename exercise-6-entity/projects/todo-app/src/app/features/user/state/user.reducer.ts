@@ -59,7 +59,7 @@ const userReducer = createReducer(
 
   on(
     UserActions.createUserSuccess,
-    (state, { id, username, name, surname }) => ({
+    (state, { user: { id, username, name, surname } }) => ({
       ...state,
       items: {
         ...state.items,
@@ -97,7 +97,7 @@ const userReducer = createReducer(
 
   on(
     UserActions.editUserSaveSuccess,
-    (state, { id, name, surname, username }) => ({
+    (state, { user: { id, name, surname, username } }) => ({
       ...state,
       items: {
         ...state.items,

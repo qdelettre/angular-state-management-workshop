@@ -36,7 +36,7 @@ export const createUser = createAction(
 
 export const createUserSuccess = createAction(
   '[User API] Create User Success',
-  props<User>()
+  props<{ user: User }>()
 );
 
 export const createUserFailure = createAction(
@@ -53,12 +53,12 @@ export const editUserCancel = createAction('[User Page] Edit User Cancel');
 
 export const editUserSave = createAction(
   '[User Page] Edit User Save',
-  props<User>()
+  props<{ user: User }>()
 );
 
 export const editUserSaveSuccess = createAction(
   '[User API] Edit User Success',
-  props<User>()
+  props<{ user: User }>()
 );
 
 export const editUserSaveFailure = createAction(
