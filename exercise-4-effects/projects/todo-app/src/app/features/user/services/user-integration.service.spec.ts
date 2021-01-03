@@ -9,7 +9,9 @@ describe('UserIntegrationService', () => {
   );
 
   it('should be created', () => {
-    const service: UserIntegrationService = TestBed.get(UserIntegrationService);
+    const service: UserIntegrationService = TestBed.inject(
+      UserIntegrationService
+    );
     expect(service).toBeTruthy();
   });
 });

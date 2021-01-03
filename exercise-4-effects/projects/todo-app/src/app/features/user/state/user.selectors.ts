@@ -4,9 +4,8 @@ import { State, userFeatureKey } from './user.reducer';
 
 const selectUserFeature = createFeatureSelector<State>(userFeatureKey);
 
-export const selectUsers = createSelector(
-  selectUserFeature,
-  user => Object.values(user.items)
+export const selectUsers = createSelector(selectUserFeature, user =>
+  Object.values(user.items)
 );
 
 export const selectUsersLoading = createSelector(
@@ -23,7 +22,6 @@ export const selectEditedUser = createSelector(
   selectUserFeature,
   user => user.items[user.editedUserId]
 );
-
 
 export const selectIsAdmin = createSelector(
   selectUserFeature,

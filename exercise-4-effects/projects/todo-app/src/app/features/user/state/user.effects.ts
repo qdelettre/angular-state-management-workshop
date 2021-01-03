@@ -6,7 +6,8 @@ import {
   catchError,
   concatMap,
   map,
-  switchMap, tap,
+  switchMap,
+  tap,
   withLatestFrom
 } from 'rxjs/operators';
 

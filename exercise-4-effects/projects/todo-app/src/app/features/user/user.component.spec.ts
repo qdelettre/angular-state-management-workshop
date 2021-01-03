@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { provideMockStore } from '@ngrx/store/testing';
 
@@ -12,13 +12,15 @@ describe('UserComponent', () => {
   let component: UserComponent;
   let fixture: ComponentFixture<UserComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, SharedModule],
-      providers: [provideMockStore()],
-      declarations: [UserComponent, UserItemComponent, UserEditorComponent]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [NoopAnimationsModule, SharedModule],
+        providers: [provideMockStore()],
+        declarations: [UserComponent, UserItemComponent, UserEditorComponent]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(UserComponent);

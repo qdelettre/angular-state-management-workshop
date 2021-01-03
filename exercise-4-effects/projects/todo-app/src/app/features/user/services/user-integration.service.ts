@@ -14,7 +14,9 @@ export class UserIntegrationService {
 
   load(isAdmin?: boolean): Observable<User[]> {
     if (isAdmin) {
-      return of([{ id: 1000, username: 'admin', name: 'Admin', surname: 'Adminovsky' }]);
+      return of([
+        { id: 1000, username: 'admin', name: 'Admin', surname: 'Adminovsky' }
+      ]);
     }
     return this.httpClient.get<User[]>(API_URL);
   }
