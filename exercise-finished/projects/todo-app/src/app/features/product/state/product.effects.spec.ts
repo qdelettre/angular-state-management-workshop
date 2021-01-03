@@ -32,7 +32,7 @@ describe('ProductEffects', () => {
       ]
     });
 
-    effects = TestBed.get<ProductEffects>(ProductEffects);
+    effects = TestBed.inject<ProductEffects>(ProductEffects);
   });
 
   it('should be created', () => {

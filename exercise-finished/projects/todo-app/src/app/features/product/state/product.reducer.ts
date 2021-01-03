@@ -71,7 +71,7 @@ const productReducer = createReducer(
   ),
 
   on(ProductActions.loadProductsSuccess, (state, { products }) => ({
-    ...adapter.addAll(products, state),
+    ...adapter.setAll(products, state),
     editedProductId: null,
     loading: false,
     error: null

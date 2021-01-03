@@ -9,7 +9,7 @@ describe('ProductIntegrationService', () => {
   );
 
   it('should be created', () => {
-    const service: ProductIntegrationService = TestBed.get(
+    const service: ProductIntegrationService = TestBed.inject(
       ProductIntegrationService
     );
     expect(service).toBeTruthy();

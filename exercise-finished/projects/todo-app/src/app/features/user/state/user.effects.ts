@@ -36,7 +36,7 @@ export class UserEffects {
       ofType(UserActions.createUser),
       concatMap(({ username, name, surname }) =>
         this.userIntegrationService.create({ username, name, surname }).pipe(
-          map(user => UserActions.createUserSuccess(user)),
+          map(user => UserActions.createUserSuccess({ user })),
           catchError(error =>
             of(
               UserActions.createUserFailure({
@@ -49,12 +49,14 @@ export class UserEffects {
     )
   );
 
-  createEdit$ = createEffect(() =>
+  editUser$ = createEffect(() =>
     this.actions$.pipe(
       ofType(UserActions.editUserSave),
-      concatMap(userToUpdate =>
-        this.userIntegrationService.update(userToUpdate).pipe(
-          map(user => UserActions.editUserSaveSuccess(user)),
+      concatMap(({ user }) =>
+        this.userIntegrationService.update(user).pipe(
+          map(editedUser =>
+            UserActions.editUserSaveSuccess({ user: editedUser })
+          ),
           catchError(error =>
             of(
               UserActions.editUserSaveFailure({
