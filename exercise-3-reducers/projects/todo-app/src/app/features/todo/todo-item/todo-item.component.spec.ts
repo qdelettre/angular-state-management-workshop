@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SharedModule } from '../../../shared/shared.module';
 
@@ -8,12 +8,14 @@ describe('TodoItemComponent', () => {
   let component: TodoItemComponent;
   let fixture: ComponentFixture<TodoItemComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [SharedModule],
-      declarations: [TodoItemComponent]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [SharedModule],
+        declarations: [TodoItemComponent]
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TodoItemComponent);
