@@ -28,7 +28,7 @@ export interface State {}
 
 // TODO 3: define and export "selectId" function for the entity adapter which will accept product and return the id property
 
-// TODO 4: define and export "sortComparer" function for the entity adapter, for example sort by product name which will accept 2 arguments of type product and use "localeCompare" on their "name" property
+// TODO 4: define and export "sortComparer" function for the entity adapter, for example sort by product name, which will accept 2 arguments of type product and use "localeCompare" on their "name" property
 
 // TODO 5: create entity adapter using "createEntityAdapter" with generic type of "Product" and pass in previously created ID selector and sort function as options
 // use IDE code completion to see what properties need to be passed in the options object
@@ -42,7 +42,7 @@ export const initialState: State = undefined;
 // TODO 7: create product reducer using "createReducer" method and pass in initial state
 const productReducer = undefined;
 
-// TODO 8: create reducer handler ( "on" ) for "loadProductsSuccess" action which will use "adapter.addAll" method
+// TODO 8: create reducer handler ( "on" ) for "loadProductsSuccess" action which will use "adapter.setAll" method
 // the handler should also set "loading" to false and unset "error" and "editedProductId" values (set to null)
 
 // TODO 9: create reducer handler ( "on" ) for "createProductsSuccess" action which will use "adapter.addOne" method
