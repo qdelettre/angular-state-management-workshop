@@ -13,7 +13,7 @@ import { TodoEditorComponent } from './todo-editor/todo-editor.component';
   declarations: [TodoComponent, TodoItemComponent, TodoEditorComponent],
   imports: [
     SharedModule,
-    TodoRoutingModule
+    TodoRoutingModule,
     // TODO 9: add "StoreModule.forFeature" to the imports and pass in arguments it expects
   ]
 })
