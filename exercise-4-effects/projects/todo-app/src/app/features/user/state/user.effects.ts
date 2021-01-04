@@ -77,11 +77,12 @@ export class UserEffects {
 
   // TODO 19: let's explore error handling of the createUser$" stream, first lets add new last operator "tap(v => console.log('tap next', v), err => console.error('tap error', err), () => console.log('tap done'))" to its .pipe()
 
-  // TODO 20: let's explore what would happen if we make "createUser$" backend request fail (we can use "throwError" instead of service call and pass in "new Error('404')")
+  // TODO 20: let's explore what would happen if we make "createUser$" backend request fail (we can use "throwError" RxJs operator instead of service call and pass in "new Error('404')")
   // let's try to create couple of users after that change (check out Chrome dev tools console)
 
   // TODO 21: now try to comment out "catchError" part and try to create couple of users and check the console
-  // we should get one real error following one more error and then by no further errors which means our effect has "died"
+  // we should get error from tap() followed by real error
+  // NgRx will automatically re-subscribe our crashed effect stream and further user creation will lead to more such errors
 
   // TODO 22: try un-comment the "catchError" part and to move it to the top level stream ( from service pipe to parent pipe, just before tap )
   // the stream will be completed because we use "of()" operator which emits value and completes which will complete
