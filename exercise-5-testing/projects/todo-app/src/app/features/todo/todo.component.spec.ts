@@ -12,7 +12,7 @@ import {
   selectTodoFilter,
   selectEditedTodo
 } from './state/todo.selectors';
-import { Todo } from './state/todo.model';
+import { Todo, TodoFilter } from './state/todo.model';
 import { State } from './state/todo.reducer';
 import { TodoComponent } from './todo.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
@@ -58,8 +58,8 @@ describe('TodoComponent', () => {
 
     // TODO 6: override all selectors used in component with some test data and call "fixture.detectChanges")
     // when overriding selectors, assign overridden selector to a variable (eg "mockSelectTodos") which will be declared at the top of the test and re-assigned for every new test in before each
-    // the selector variable will be of typed based on what it hsould return
-    // eg "MemoizedSelector<State, string>" for mockSelectTodoFilter
+    // the selector variable will be of typed based on what it should return
+    // eg "MemoizedSelector<State, TodoFilter>" for mockSelectTodoFilter
   });
 
   it('should render todo correct todo items', () => {
@@ -75,5 +75,7 @@ describe('TodoComponent', () => {
     // this will only have impact on the printed label as data was mocked by other selectors (use provided "getDescription()" method to check for the rendered label)
   });
 
-  it('displays correct description based on filter: "ACTIVE"', () => {});
+  it('displays correct description based on filter: "ACTIVE"', () => {
+    // similar to previous test
+  });
 });
