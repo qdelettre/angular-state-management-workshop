@@ -66,7 +66,7 @@ export class TodoComponent implements OnInit {
   }
 
   saveEditTodo(todo: Todo) {
-    // TODO 14: dispatch appropriate action with correct payload to save edited todo
+    // TODO 14: dispatch appropriate action with correct payload to save edited todo (update)
   }
 
   removeTodo(id: string) {
