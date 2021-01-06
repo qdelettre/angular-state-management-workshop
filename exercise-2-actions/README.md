@@ -7,7 +7,7 @@ by [@tomastrajan](https://twitter.com/tomastrajan)
 In this exercise were going to explore how to implement and use actions
 
 - Implement action without payload
-- Implement action wtih typed payload (props)
+- Implement action with typed payload (props)
 - Implement action using custom action factory
 - Dispatch actions from component as a result of user interaction
 
