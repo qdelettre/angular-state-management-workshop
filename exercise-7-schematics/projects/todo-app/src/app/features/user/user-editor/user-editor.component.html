@@ -1,0 +1,74 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>User editor</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form #form="ngForm">
+      <mat-form-field appearance="outline">
+        <mat-label>ID</mat-label>
+        <input matInput name="id" [(ngModel)]="editedUser.id" disabled />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          name="username"
+          placeholder="username"
+          required
+          minlength="5"
+          [(ngModel)]="editedUser.username"
+          #username="ngModel"
+        />
+        <mat-error
+          *ngIf="
+            username.touched && username.invalid && username.errors.required
+          "
+          >Please provide a username...</mat-error
+        >
+        <mat-error
+          *ngIf="
+            username.touched && username.invalid && username.errors.minlength
+          "
+          >Username has to have at least 5 characters...</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          name="name"
+          placeholder="Name"
+          required
+          [(ngModel)]="editedUser.name"
+          #name="ngModel"
+        />
+        <mat-error *ngIf="name.touched && name.invalid && name.errors.required"
+          >Please provide a name...</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input
+          matInput
+          name="surname"
+          placeholder="Surname"
+          required
+          [(ngModel)]="editedUser.surname"
+          #surname="ngModel"
+        />
+        <mat-error
+          *ngIf="surname.touched && surname.invalid && surname.errors.required"
+          >Please provide a surname...</mat-error
+        >
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-flat-button color="primary" (click)="onSave(form)">Save</button>
+    <button mat-button (click)="onCancel()">Cancel</button>
+  </mat-card-actions>
+</mat-card>

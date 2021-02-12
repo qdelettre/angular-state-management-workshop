@@ -1,0 +1,43 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20%;
+
+  .controls {
+    width: 100%;
+    margin: 0 0 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    form {
+      margin: 0 0 0 10px;
+      flex: 1 0 auto;
+
+      mat-form-field {
+        height: 58px;
+        width: 100%;
+      }
+    }
+
+    button {
+      height: 50px;
+      margin: 0 0 0 10px;
+
+      &:last-of-type {
+        margin: 0 10px 0 10px;
+      }
+    }
+
+    span {
+      display: inline-block;
+      width: 200px;
+      text-align: right;
+    }
+  }
+
+  todo-todo-editor {
+    width: 100%;
+  }
+}

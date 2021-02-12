@@ -1,0 +1,37 @@
+<h1>
+  Product Admin
+</h1>
+
+<button
+  class="action-create-new-product"
+  mat-flat-button
+  color="primary"
+  *ngIf="!newProduct"
+  (click)="createNewProduct()"
+>
+  Create new product
+</button>
+
+<mat-spinner diameter="55" *ngIf="loading | async"></mat-spinner>
+<p class="error" *ngIf="error | async as errorMessage">{{ errorMessage }}</p>
+
+<todo-product-editor
+  *ngIf="newProduct"
+  [product]="newProduct"
+  (save)="createNewProductSave($event)"
+  (cancel)="createNewProductCancel()"
+></todo-product-editor>
+
+<todo-product-editor
+  *ngIf="productsEditedProduct | async as editedProduct"
+  [product]="editedProduct"
+  (save)="editProductSave($event)"
+  (cancel)="editProductCancel()"
+></todo-product-editor>
+
+<todo-product-item
+  *ngFor="let product of products | async"
+  [product]="product"
+  (edit)="editProduct($event)"
+  (remove)="removeProduct($event)"
+></todo-product-item>

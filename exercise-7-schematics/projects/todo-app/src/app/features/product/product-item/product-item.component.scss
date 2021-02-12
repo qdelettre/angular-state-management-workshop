@@ -1,0 +1,36 @@
+:host {
+  display: block;
+  width: 100%;
+
+  mat-card {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    height: 62px;
+    padding: 5px 15px;
+
+    p {
+      flex: 1 0 auto;
+      cursor: pointer;
+      user-select: none;
+      margin: 0;
+
+      span {
+        display: inline-block;
+        padding: 7px 0 0 0;
+        opacity: 0.5;
+        font-size: 0.7em;
+      }
+    }
+
+    button {
+      display: none;
+    }
+
+    &:hover {
+      button {
+        display: block;
+      }
+    }
+  }
+}
