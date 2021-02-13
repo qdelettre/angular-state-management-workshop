@@ -17,7 +17,7 @@ In this exercise were going to explore how to generate NgRx state features using
 
 ## Exercise 
 
-1. Install NgRx schematics package using `npm i -D @ngrx/schematics` and verify the installation by running `ng g @ngrx/schematics: --help`
+1. Install NgRx schematics package using `npm i -D c` and verify the installation by running `ng g @ngrx/schematics: --help`
 2. Explore printed list of "Available Schematics", we'll see it contains 
    familiar things like `component` or `module` together with new things like `feature` or reducer. 
    This is because `@ngrx/schematics` extends default `@schematics/angular` collection for our convenience.
@@ -27,6 +27,11 @@ In this exercise were going to explore how to generate NgRx state features using
         "defaultCollection": "@ngrx/schematics"
     },
     ```
+4. Run `ng g --help` and see that the output still references `@ngrx/schematics` because we set it as default collection
+   so we don't have to type whole collection name every time we want to generate something using `ng g`
+   
+     
+   
 ## How to use exercises
 
 - every exercise folder should be installed using `npm ci`
