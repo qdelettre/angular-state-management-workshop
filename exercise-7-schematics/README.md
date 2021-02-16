@@ -17,7 +17,7 @@ In this exercise were going to explore how to generate NgRx state features using
 
 ## Exercise 
 
-1. Install NgRx schematics package using `npm i -D c` and verify the installation by running `ng g @ngrx/schematics: --help`
+1. Install NgRx schematics package using `npm i -D @ngrx/schematics` and verify the installation by running `ng g @ngrx/schematics: --help`.
 2. Explore printed list of "Available Schematics", we'll see it contains 
    familiar things like `component` or `module` together with new things like `feature` or reducer. 
    This is because `@ngrx/schematics` extends default `@schematics/angular` collection for our convenience.
@@ -27,9 +27,13 @@ In this exercise were going to explore how to generate NgRx state features using
         "defaultCollection": "@ngrx/schematics"
     },
     ```
-4. Run `ng g --help` and see that the output still references `@ngrx/schematics` because we set it as default collection
-   so we don't have to type whole collection name every time we want to generate something using `ng g`
-   
+4. Run `ng g --help` and see that the output still references `@ngrx/schematics` because we set it as default collection,
+   so we don't have to type whole collection name every time we want to generate something using `ng g`.
+5. Generate new lazy loaded module for user feature using `ng g module features/user --route user --module app.module.ts` 
+   and try to navigate to user route using main navigation.
+6. Run `ng g feature --help` to explore all the available options for generating NgRx state features. We'll be using
+   `-c` (`--creators`) to use new NgRx factory functions and `-a` (`--api`) to generate effects and API action stubs.
+7. Generate new NgRx state feature for the `user` lazy feature using `ng g feature features/user/state/user -a -c --module features/user/user.module.ts` 
      
    
 ## How to use exercises
