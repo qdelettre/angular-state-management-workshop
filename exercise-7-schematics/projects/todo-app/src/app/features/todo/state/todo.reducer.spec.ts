@@ -1,13 +1,13 @@
 import { reducer, initialState } from './todo.reducer';
 import {
+  addTodo,
   editTodo,
   filterTodos,
   removeDoneTodos,
   removeTodo,
   toggleTodo,
   updateTodo,
-  cancelEditTodo,
-  addTodoWithId
+  cancelEditTodo
 } from './todo.actions';
 
 describe('Todo Reducer', () => {
@@ -23,7 +23,7 @@ describe('Todo Reducer', () => {
 
   describe('add todo action', () => {
     it('should add todo', () => {
-      const action = addTodoWithId('Test');
+      const action = addTodo({ title: 'Test' });
 
       const result = reducer(initialState, action);
 

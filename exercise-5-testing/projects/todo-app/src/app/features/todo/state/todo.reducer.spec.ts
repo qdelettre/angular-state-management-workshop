@@ -1,4 +1,5 @@
-import { reducer, initialState } from './todo.reducer';
+import uuid from 'uuid/v4';
+import { reducer, State } from './todo.reducer';
 import {
   addTodo,
   editTodo,
@@ -11,14 +12,34 @@ import {
   addTodoWithId
 } from './todo.actions';
 
+const id1 = uuid();
+const id2 = uuid();
+const id3 = uuid();
+const id4 = uuid();
+
+export const MOCK_STATE: State = {
+  items: {
+    [id1]: { id: id1, title: 'Sign up for NgRx workshop', done: true },
+    [id2]: { id: id2, title: 'Learn NgRx', done: false },
+    [id3]: { id: id3, title: 'Use NgRx in your apps', done: false },
+    [id4]: {
+      id: id4,
+      title: 'Implement amazing features for users',
+      done: false
+    }
+  },
+  editedTodoId: null,
+  todoFilter: 'ALL'
+};
+
 describe('Todo Reducer', () => {
   describe('an unknown action', () => {
     it('should return the previous state', () => {
       const action = {} as any;
 
-      const result = reducer(initialState, action);
+      const result = reducer(MOCK_STATE, action);
 
-      expect(result).toBe(initialState);
+      expect(result).toBe(MOCK_STATE);
     });
   });
 

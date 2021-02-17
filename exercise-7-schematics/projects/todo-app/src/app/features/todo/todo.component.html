@@ -1,0 +1,70 @@
+<h1>What do I need to do?</h1>
+
+<div class="controls">
+  <form #form="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Todo description</mat-label>
+      <input
+        matInput
+        name="todo"
+        placeholder="Eat some great cake..."
+        required
+        minlength="5"
+        [(ngModel)]="newTodoTitle"
+        #todo="ngModel"
+      />
+      <mat-error *ngIf="todo.touched && todo.invalid && todo.errors.required"
+        >Please provide todo description...</mat-error
+      >
+      <mat-error *ngIf="todo.touched && todo.invalid && todo.errors.minlength"
+        >Todo description has to have at least 5 characters...</mat-error
+      >
+    </mat-form-field>
+  </form>
+  <button mat-flat-button color="primary" (click)="addTodo(form)">
+    Add todo
+  </button>
+  <button mat-stroked-button color="warn" (click)="removeDoneTodos()">
+    Remove done
+  </button>
+  <ng-container *ngIf="todosFilter | async as activeFilter">
+    <button mat-stroked-button [matMenuTriggerFor]="menu">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button
+        mat-menu-item
+        (click)="setTodoFilter('ALL')"
+        [ngClass]="{ active: activeFilter === 'ALL' }"
+      >
+        All
+      </button>
+      <button mat-menu-item (click)="setTodoFilter('DONE')">Done</button>
+      <button mat-menu-item (click)="setTodoFilter('ACTIVE')">Active</button>
+    </mat-menu>
+  </ng-container>
+  <span>
+    Displaying {{ (todosFilter | async).toLowerCase() }} todo{{
+      (todosCount | async) > 1 ? 's' : ''
+    }}
+  </span>
+  <button mat-flat-button disabled>{{ todosCount | async }}</button>
+</div>
+
+<todo-todo-editor
+  *ngIf="todosEditedTodo | async as editedTodo"
+  [todo]="editedTodo"
+  (save)="saveEditTodo($event)"
+  (cancel)="cancelEditTodo()"
+></todo-todo-editor>
+
+<todo-todo-item
+  *ngFor="let todo of todos | async"
+  [todo]="todo"
+  (toggle)="toggleTodo($event)"
+  (edit)="editTodo($event)"
+  (remove)="removeTodo($event)"
+></todo-todo-item>
+<p *ngIf="(todosCount | async) === 0">
+  Nothing to show, try adding new todo or changing filter...
+</p>
