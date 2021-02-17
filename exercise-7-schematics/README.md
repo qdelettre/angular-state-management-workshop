@@ -33,7 +33,18 @@ In this exercise were going to explore how to generate NgRx state features using
    and try to navigate to user route using main navigation.
 6. Run `ng g feature --help` to explore all the available options for generating NgRx state features. We'll be using
    `-c` (`--creators`) to use new NgRx factory functions and `-a` (`--api`) to generate effects and API action stubs.
-7. Generate new NgRx state feature for the `user` lazy feature using `ng g feature features/user/state/user -a -c --module features/user/user.module.ts` 
+7. Generate new NgRx state feature for the `user` lazy feature using `ng g feature features/user/state/user -a -c --module features/user/user.module.ts`
+8. Define and export `User` interface in the `features/user/state/user.model.ts` with `id: number`, `username: string` properties
+9. Generate backend integration (API) service using `ng g service features/user/user` and implement a `load()` method 
+   which will use Angular `HttpClient` to retrieve list of users (previously created `User` interface) from `http://localhost:4300/users` endpoint
+10. Use the newly generated service in the `features/user/state/user.effects.ts` and adjust related actions to handle `users` payload
+11. Adjust implementation in `features/user/state/user.reducer.ts` to use `@ngrx/entity` (and its `EntityState` for `User` entity) and implement 
+    reducer handlers for actions previously used in the effect
+12. Implement basic selectors using `@ngrx/entity` (and its `adapter`)
+13. Inject the `Store` and use previously created selectors in the  `features/user/user.component.ts` to retrieve list of `User` 
+    and render it in the template using `*ngFor` (simple rendering with `<div>` and printing of strings using `{{ }}` is sufficient for our case)
+14. Implement `ngOnInit` lifecycle hook in the `features/user/user.component.ts` to dispatch initial action to trigger retrieving of users from backend
+
      
    
 ## How to use exercises
