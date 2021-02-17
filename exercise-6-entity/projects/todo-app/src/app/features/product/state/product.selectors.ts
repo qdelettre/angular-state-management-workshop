@@ -23,5 +23,5 @@ export const selectProductLoading = undefined;
 // TODO 21: implement selector
 export const selectProductError = undefined;
 
-// TODO 21: implement selector
+// TODO 22: implement selector
 export const selectEditedProduct = undefined;

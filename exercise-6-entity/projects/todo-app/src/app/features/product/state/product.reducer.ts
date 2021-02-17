@@ -45,13 +45,13 @@ const productReducer = undefined;
 // TODO 8: create reducer handler ( "on" ) for "loadProductsSuccess" action which will use "adapter.setAll" method
 // the handler should also set "loading" to false and unset "error" and "editedProductId" values (set to null)
 
-// TODO 9: create reducer handler ( "on" ) for "createProductsSuccess" action which will use "adapter.addOne" method
+// TODO 9: create reducer handler ( "on" ) for "createProductSuccess" action which will use "adapter.addOne" method
 // the handler should also set "loading" to false and unset "error" and "editedProductId" values (set to null)
 
-// TODO 10: create reducer handler ( "on" ) for "updateProductsSuccess" action which will use "adapter.updateOne" method
+// TODO 10: create reducer handler ( "on" ) for "updateProductSuccess" action which will use "adapter.updateOne" method
 // the handler should also set "loading" to false and unset "error" and "editedProductId" values (set to null)
 
-// TODO 11: create reducer handler ( "on" ) for "removeProductsSuccess" action which will use "adapter.removeOne" method
+// TODO 11: create reducer handler ( "on" ) for "removeProductSuccess" action which will use "adapter.removeOne" method
 // the handler should also set "loading" to false and unset "error" and "editedProductId" values (set to null)
 
 // TODO 12: create reducer handler ( "on" ) for "editProduct" which sets the "editedProductId"
