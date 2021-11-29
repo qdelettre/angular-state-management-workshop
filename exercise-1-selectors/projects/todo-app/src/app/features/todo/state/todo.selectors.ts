@@ -16,3 +16,8 @@ export const selectTodosCount = undefined;
 
 // TODO 5: create "selectEditedTodo" selector to select todo item that is being edited (state has a "editedTodoId" property)
 export const selectEditedTodo = undefined;
+
+// TODO 8: (Optional) create selectTodoView selector to select the "perfect" state for the todo component
+// so that the component and its template only uses that one selector instead of original 4 selectors
+// hint: use <ng-container> with *ngIf to unwrap the view state in the template
+// hint: selector can be assigned directly to the property so there should be no reference to any interface
