@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
 @mixin todo-app-component-theme($theme) {
@@ -11,7 +12,7 @@
     mat-toolbar {
       button {
         &.active {
-          background-color: mat-color($primary, lighter) !important;
+          background-color: mat.get-color-from-palette($primary, lighter) !important;
         }
       }
     }
