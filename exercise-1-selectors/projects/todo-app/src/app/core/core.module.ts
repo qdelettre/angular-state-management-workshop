@@ -19,10 +19,15 @@ import { RouterStateModule } from './router-state/router-state.module';
       {},
       {
         runtimeChecks: {
+          // default on
           strictStateImmutability: true,
-          strictStateSerializability: true,
           strictActionImmutability: true,
-          strictActionSerializability: true
+
+          // default off
+          strictStateSerializability: true,
+          strictActionSerializability: true,
+          strictActionWithinNgZone: true,
+          strictActionTypeUniqueness: true,
         }
       }
     ),
