@@ -23,6 +23,7 @@
         "ngrx"
       ],
       "rules": {
+        "ngrx/prefer-effect-callback-in-block-statement": "off",
         "ngrx/on-function-explicit-return-type": "off"
       }
     },

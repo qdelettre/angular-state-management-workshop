@@ -31,13 +31,13 @@ export class UserComponent implements OnInit {
 
   newUser: Partial<User> | null = null;
 
-  constructor(private store: Store<{}>) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
-    this.error = this.store.pipe(select(selectUsersError));
-    this.loading = this.store.pipe(select(selectUsersLoading));
-    this.users = this.store.pipe(select(selectUsers));
-    this.usersEditedUser = this.store.pipe(select(selectEditedUser));
+    this.error = this.store.select(selectUsersError);
+    this.loading = this.store.select(selectUsersLoading);
+    this.users = this.store.select(selectUsers);
+    this.usersEditedUser = this.store.select(selectEditedUser);
 
     this.store.dispatch(loadUsers());
   }

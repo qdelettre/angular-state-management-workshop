@@ -12,7 +12,10 @@
     mat-toolbar {
       button {
         &.active {
-          background-color: mat.get-color-from-palette($primary, lighter) !important;
+          background-color: mat.get-color-from-palette(
+            $primary,
+            lighter
+          ) !important;
         }
       }
     }

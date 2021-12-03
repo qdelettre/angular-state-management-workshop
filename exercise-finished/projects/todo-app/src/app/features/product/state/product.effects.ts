@@ -12,8 +12,8 @@ export class ProductEffects {
     private productIntegrationService: ProductIntegrationService
   ) {}
 
-  loadProducts$ = createEffect(() =>
-    this.actions$.pipe(
+  loadProducts$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(ProductActions.loadProducts),
       switchMap(() =>
         this.productIntegrationService.load().pipe(
@@ -21,11 +21,11 @@ export class ProductEffects {
           catchError(error => of(ProductActions.loadProductsFailure({ error })))
         )
       )
-    )
-  );
+    );
+  });
 
-  createProduct$ = createEffect(() =>
-    this.actions$.pipe(
+  createProduct$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(ProductActions.createProduct),
       concatMap(({ product }) =>
         this.productIntegrationService.create(product).pipe(
@@ -37,11 +37,11 @@ export class ProductEffects {
           )
         )
       )
-    )
-  );
+    );
+  });
 
-  updateProduct$ = createEffect(() =>
-    this.actions$.pipe(
+  updateProduct$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(ProductActions.updateProduct),
       concatMap(({ product }) =>
         this.productIntegrationService.update(product).pipe(
@@ -55,11 +55,11 @@ export class ProductEffects {
           )
         )
       )
-    )
-  );
+    );
+  });
 
-  removeProduct$ = createEffect(() =>
-    this.actions$.pipe(
+  removeProduct$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(ProductActions.removeProduct),
       concatMap(({ id }) =>
         this.productIntegrationService.remove(id).pipe(
@@ -69,6 +69,6 @@ export class ProductEffects {
           )
         )
       )
-    )
-  );
+    );
+  });
 }
