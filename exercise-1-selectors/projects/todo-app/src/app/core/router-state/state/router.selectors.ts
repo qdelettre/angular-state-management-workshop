@@ -4,7 +4,6 @@ import { getSelectors, RouterReducerState } from '@ngrx/router-store';
 import { routerFeatureKey, State } from './router.reducer';
 
 export const selectRouter = createFeatureSelector<
-  State,
   RouterReducerState<any>
 >(routerFeatureKey);
 
