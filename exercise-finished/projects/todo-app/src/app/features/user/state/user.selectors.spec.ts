@@ -1,14 +1,14 @@
-import { selectUsers } from './user.selectors';
+import { selectUserView } from './user.selectors';
 
 describe('User Selectors', () => {
   describe('selectUsers', () => {
     it('should select users', () => {
-      const result = selectUsers.projector({
+      const result = selectUserView.projector({
         items: { 1: { id: 1, username: 'tester' } }
       });
-      expect(result.length).toBe(1);
-      expect(result[0].id).toBe(1);
-      expect(result[0].username).toBe('tester');
+      expect(result.users.length).toBe(1);
+      expect(result.users[0].id).toBe(1);
+      expect(result.users[0].username).toBe('tester');
     });
   });
 });

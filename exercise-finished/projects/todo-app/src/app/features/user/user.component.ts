@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
-import {
-  selectEditedUser,
-  selectUsers,
-  selectUsersError,
-  selectUsersLoading
-} from './state/user.selectors';
+import { selectUserView } from './state/user.selectors';
 import {
   createUser,
   editUser,
@@ -24,21 +18,13 @@ import { User } from './state/user.model';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  loading: Observable<boolean>;
-  error: Observable<string>;
-  users: Observable<User[]>;
-  usersEditedUser: Observable<Partial<User> | undefined>;
+  view$ = this.store.select(selectUserView);
 
   newUser: Partial<User> | null = null;
 
   constructor(private store: Store) {}
 
   ngOnInit() {
-    this.error = this.store.select(selectUsersError);
-    this.loading = this.store.select(selectUsersLoading);
-    this.users = this.store.select(selectUsers);
-    this.usersEditedUser = this.store.select(selectEditedUser);
-
     this.store.dispatch(loadUsers());
   }
 
