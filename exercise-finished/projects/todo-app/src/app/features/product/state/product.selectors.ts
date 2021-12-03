@@ -23,23 +23,13 @@ export const selectProductEntities = createSelector(
   selectEntities
 );
 
-export const selectProductEditedProductId = createSelector(
+export const selectProductView = createSelector(
   selectProductFeature,
-  product => product.editedProductId
-);
-
-export const selectProductLoading = createSelector(
-  selectProductFeature,
-  product => product.loading
-);
-
-export const selectProductError = createSelector(
-  selectProductFeature,
-  product => product.error
-);
-
-export const selectEditedProduct = createSelector(
+  selectProductItems,
   selectProductEntities,
-  selectProductEditedProductId,
-  (products, id) => products[id]
+  (state, products, productEntities) => ({
+    ...state,
+    products,
+    editedProduct: productEntities[state.editedProductId]
+  })
 );

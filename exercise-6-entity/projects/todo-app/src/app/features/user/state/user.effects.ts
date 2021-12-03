@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of, catchError, concatMap, map, switchMap, Observable } from 'rxjs';
+import { of, catchError, concatMap, map, switchMap } from 'rxjs';
 
 import * as UserActions from './user.actions';
 import { UserIntegrationService } from '../services/user-integration.service';
@@ -8,7 +8,7 @@ import { UserIntegrationService } from '../services/user-integration.service';
 @Injectable()
 export class UserEffects {
   constructor(
-    private actions$: Observable<Actions>,
+    private actions$: Actions,
     private userIntegrationService: UserIntegrationService
   ) {}
 
