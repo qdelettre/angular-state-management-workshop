@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs';
-import { catchError, concatMap, map, switchMap } from 'rxjs/operators';
+import { of, catchError, concatMap, map, switchMap Observable } from 'rxjs';
 
 import * as ProductActions from './product.actions';
 import { ProductIntegrationService } from '../services/product-integration.service';
@@ -9,7 +8,7 @@ import { ProductIntegrationService } from '../services/product-integration.servi
 @Injectable()
 export class ProductEffects {
   constructor(
-    private actions$: Actions,
+    private actions$: Observable<Actions>,
     private productIntegrationService: ProductIntegrationService
   ) {}
 
