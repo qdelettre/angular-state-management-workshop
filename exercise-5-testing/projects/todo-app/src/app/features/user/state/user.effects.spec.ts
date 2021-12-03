@@ -55,6 +55,7 @@ describe('UserEffects', () => {
 
   it('loads users with failed backend request', () => {
     // TODO 17: implement "loadUsers$" effect test for failed backend request
+    // hint: the error object is the third argument of hot / cold helpers, eg cold('--#|', {}, new Error('oops'))
   });
 
   it('it delivers correct (second) response even if first one comes in as last', () => {
