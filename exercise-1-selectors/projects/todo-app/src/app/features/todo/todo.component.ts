@@ -34,7 +34,7 @@ export class TodoComponent implements OnInit {
 
   newTodoTitle: string;
 
-  constructor(private store: Store<{}>) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
     // TODO 6: use selectors instead of hardcoded values (use pipe form of select)
