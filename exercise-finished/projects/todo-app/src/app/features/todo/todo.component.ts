@@ -1,7 +1,6 @@
 import { NgForm } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
 import {
   addTodo,
@@ -13,12 +12,7 @@ import {
   toggleTodo,
   updateTodo
 } from './state/todo.actions';
-import {
-  selectEditedTodo,
-  selectTodoFilter,
-  selectTodos,
-  selectTodosCount
-} from './state/todo.selectors';
+import { selectTodosView } from './state/todo.selectors';
 import { Todo, TodoFilter } from './state/todo.model';
 
 @Component({
@@ -26,22 +20,12 @@ import { Todo, TodoFilter } from './state/todo.model';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
-  todos: Observable<Todo[]>;
-  todosCount: Observable<number>;
-  todosFilter: Observable<string>;
-  todosEditedTodo: Observable<Todo | undefined>;
+export class TodoComponent {
+  view$ = this.store.select(selectTodosView);
 
   newTodoTitle: string;
 
   constructor(private store: Store) {}
-
-  ngOnInit() {
-    this.todos = this.store.select(selectTodos);
-    this.todosCount = this.store.select(selectTodosCount);
-    this.todosFilter = this.store.select(selectTodoFilter);
-    this.todosEditedTodo = this.store.select(selectEditedTodo);
-  }
 
   addTodo(form: NgForm) {
     if (form.valid) {
