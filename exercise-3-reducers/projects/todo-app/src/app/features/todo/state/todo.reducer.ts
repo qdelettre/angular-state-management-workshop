@@ -33,10 +33,16 @@ const todoReducer = undefined;
 // TODO 7: implement this for a real action eg "filterTodos" which re-uses whole state and overwrites "todoFilter" with the action payload value
 // the 8th step is at the end of this file
 
-// TODO 10: implement "on" handlers for all other actions (addTodoWithId, toggleTodo, removeTodo, editTodo, cancelEditTodo, updateTodo, removeDoneTodos)
-// try to implement all of them while exploring different ways of creating new state using immutable approach
+// try to implement all other while exploring different ways of creating new state using immutable approach
+// TODO 10: implement "on" handlers for addTodoWithId
+// TODO 11: implement "on" handlers for toggleTodo
+// TODO 12: implement "on" handlers for removeTodo
+// TODO 13: implement "on" handlers for editTodo
+// TODO 14: implement "on" handlers for cancelEditTodo
+// TODO 15: implement "on" handlers for updateTodo
+// TODO 16: implement "on" handlers for removeDoneTodos
 
-// TODO 11: try to run tests to see if adding implementation fulfilled their expectation
+// TODO 17: try to run tests to see if adding implementation fulfilled their expectation
 
 // TODO 8: define and export "reducer" function which accepts state and action and returns "todoReducer" called with state and action
 // the 9th step is in todo.module.ts file
