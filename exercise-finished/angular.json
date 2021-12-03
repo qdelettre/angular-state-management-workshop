@@ -81,14 +81,11 @@
           "builder": "@angular-builders/jest:run"
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/todo-app/tsconfig.app.json",
-              "projects/todo-app/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "projects/todo-app/**/*.ts",
+              "projects/todo-app/**/*.html"
             ]
           }
         }
@@ -97,7 +94,7 @@
   },
   "defaultProject": "todo-app",
   "cli": {
-    "defaultCollection": "@ngrx/schematics"
+    "defaultCollection": "@angular-eslint/schematics"
   },
   "schematics": {
     "@schematics/angular:component": {
