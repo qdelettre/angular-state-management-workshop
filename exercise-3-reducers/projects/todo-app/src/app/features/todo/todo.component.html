@@ -14,10 +14,10 @@
           #todo="ngModel"
         />
         <mat-error *ngIf="todo.touched && todo.invalid && todo.errors.required"
-        >Please provide todo description...</mat-error
+          >Please provide todo description...</mat-error
         >
         <mat-error *ngIf="todo.touched && todo.invalid && todo.errors.minlength"
-        >Todo description has to have at least 5 characters...</mat-error
+          >Todo description has to have at least 5 characters...</mat-error
         >
       </mat-form-field>
     </form>
@@ -45,7 +45,7 @@
 
     <span>
       Displaying {{ v.todoFilter.toLowerCase() }} todo{{
-      v.todos.length > 1 ? 's' : ''
+        v.todos.length > 1 ? 's' : ''
       }}
     </span>
     <button mat-flat-button disabled>{{ v.todos.length }}</button>

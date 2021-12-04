@@ -27,7 +27,7 @@ import { RouterStateModule } from './router-state/router-state.module';
           strictStateSerializability: true,
           strictActionSerializability: true,
           strictActionWithinNgZone: true,
-          strictActionTypeUniqueness: true,
+          strictActionTypeUniqueness: true
         }
       }
     ),
