@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Product } from '../state/product.model';
 
@@ -7,14 +7,10 @@ import { Product } from '../state/product.model';
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss']
 })
-export class ProductItemComponent implements OnInit {
+export class ProductItemComponent {
   @Input() product: Product;
   @Output() edit = new EventEmitter<number>();
   @Output() remove = new EventEmitter<number>();
-
-  constructor() {}
-
-  ngOnInit() {}
 
   onEdit() {
     this.edit.emit(this.product.id);
