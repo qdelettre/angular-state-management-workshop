@@ -1,20 +1,28 @@
 import { By } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Store } from '@ngrx/store';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { SharedModule } from '../../shared/shared.module';
 
-import {
-  selectTodos,
-  selectTodosCount,
-  selectTodoFilter,
-  selectEditedTodo
-} from './state/todo.selectors';
+import { selectTodosView } from './state/todo.selectors';
 import { TodoComponent } from './todo.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodoEditorComponent } from './todo-editor/todo-editor.component';
+
+const MOCK_DATA: any = {
+  todos: [
+    { id: '1', title: 'Test 1', done: true },
+    { id: '2', title: 'Test 2', done: false }
+  ],
+  items: {
+    '1': { id: '1', title: 'Test 1', done: true },
+    '2': { id: '2', title: 'Test 2', done: false }
+  },
+  todoFilter: 'ALL',
+  editedTodoId: null,
+  editedTodo: undefined
+};
 
 describe('TodoComponent', () => {
   let component: TodoComponent;
@@ -23,20 +31,20 @@ describe('TodoComponent', () => {
 
   const getCount = () =>
     fixture.debugElement
-      .query(By.css('.controls > button:last-of-type'))
-      .nativeElement.textContent.trim();
+    .query(By.css('.controls > button:last-of-type'))
+    .nativeElement.textContent.trim();
 
   const getDescription = () =>
     fixture.debugElement
-      .query(By.css('.controls > span'))
-      .nativeElement.textContent.trim();
+    .query(By.css('.controls > span'))
+    .nativeElement.textContent.trim();
 
   const getTodoItems = () =>
     fixture.debugElement.queryAll(By.css('todo-todo-item'));
 
   const getTodoItemText = (index: number) =>
     fixture.debugElement
-      .queryAll(By.css('todo-todo-item'))
+    .queryAll(By.css('todo-todo-item'))
       [index].query(By.css('p')).nativeElement.textContent;
 
   beforeEach(
@@ -56,13 +64,7 @@ describe('TodoComponent', () => {
   });
 
   it('should render todos', () => {
-    store.overrideSelector(selectTodos, [
-      { id: '1', title: 'Test 1', done: true },
-      { id: '2', title: 'Test 2', done: false }
-    ]);
-    store.overrideSelector(selectTodosCount, 2);
-    store.overrideSelector(selectTodoFilter, 'ALL');
-    store.overrideSelector(selectEditedTodo, null);
+    store.overrideSelector(selectTodosView, MOCK_DATA);
     fixture.detectChanges();
 
     expect(getTodoItems().length).toBe(2);
@@ -72,10 +74,10 @@ describe('TodoComponent', () => {
   });
 
   it('displays correct description based on filter', () => {
-    store.overrideSelector(selectTodos, []);
-    store.overrideSelector(selectTodosCount, 2);
-    store.overrideSelector(selectTodoFilter, 'DONE');
-    store.overrideSelector(selectEditedTodo, null);
+    store.overrideSelector(selectTodosView, {
+      ...MOCK_DATA,
+      todoFilter: 'DONE'
+    });
     fixture.detectChanges();
 
     expect(getDescription()).toBe('Displaying done todos');
@@ -83,10 +85,10 @@ describe('TodoComponent', () => {
   });
 
   it('displays correct description based on filter', () => {
-    store.overrideSelector(selectTodos, []);
-    store.overrideSelector(selectTodosCount, 2);
-    store.overrideSelector(selectTodoFilter, 'ACTIVE');
-    store.overrideSelector(selectEditedTodo, null);
+    store.overrideSelector(selectTodosView, {
+      ...MOCK_DATA,
+      todoFilter: 'ACTIVE'
+    });
     fixture.detectChanges();
 
     expect(getDescription()).toBe('Displaying active todos');
