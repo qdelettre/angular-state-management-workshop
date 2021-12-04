@@ -20,7 +20,7 @@ export const initialState: State = {
   editedUserId: null
 };
 
-const userReducer = createReducer(
+export const userReducer = createReducer(
   initialState,
 
   on(UserActions.loadUsers, state => ({
@@ -143,7 +143,3 @@ const userReducer = createReducer(
     editedUserId: null
   }))
 );
-
-export function reducer(state: State | undefined, action: Action) {
-  return userReducer(state, action);
-}

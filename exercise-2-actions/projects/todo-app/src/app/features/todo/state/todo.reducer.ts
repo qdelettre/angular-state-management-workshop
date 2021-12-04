@@ -35,7 +35,7 @@ export const initialState: State = {
   todoFilter: 'ALL'
 };
 
-const todoReducer = createReducer(
+export const todoReducer = createReducer(
   initialState,
 
   on(TodoActions.addTodo || noopAction, (state, { title }) => {
@@ -118,7 +118,3 @@ const todoReducer = createReducer(
     editedTodoId: null
   }))
 );
-
-export function reducer(state: State | undefined, action: Action) {
-  return todoReducer(state, action);
-}

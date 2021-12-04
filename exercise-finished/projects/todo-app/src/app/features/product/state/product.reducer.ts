@@ -31,7 +31,7 @@ export const initialState: State = adapter.getInitialState({
   error: null
 });
 
-const productReducer = createReducer(
+export const productReducer = createReducer(
   initialState,
 
   on(ProductActions.editProduct, (state, { id }) => ({
@@ -98,7 +98,3 @@ const productReducer = createReducer(
     error: null
   }))
 );
-
-export function reducer(state: State | undefined, action: Action) {
-  return productReducer(state, action);
-}

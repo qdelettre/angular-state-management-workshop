@@ -16,7 +16,7 @@ import { UserEditorComponent } from './user-editor/user-editor.component';
   imports: [
     SharedModule,
     UserRoutingModule,
-    StoreModule.forFeature(fromUser.userFeatureKey, fromUser.reducer),
+    StoreModule.forFeature(fromUser.userFeatureKey, fromUser.userReducer),
     EffectsModule.forFeature([UserEffects])
   ]
 })
