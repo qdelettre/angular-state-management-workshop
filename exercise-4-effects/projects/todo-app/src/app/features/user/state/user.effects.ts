@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import {
   of,
@@ -9,7 +9,6 @@ import {
   map,
   switchMap,
   tap,
-  withLatestFrom
 } from 'rxjs';
 
 import { UserIntegrationService } from '../services/user-integration.service';
@@ -52,7 +51,7 @@ export class UserEffects {
   // TODO 7: in case of error, handle the error using "catchError" and return Observable ( "of()" ) "loadUsersFailure"
   // where we will pass in error as string (using ".toString()") (in nested pipe, relative to service)
 
-  // let's review what you have until now together, also the 8th step is in user.module.ts file
+  // 8th step is in user.module.ts file
 
   // TODO 9: implement steps 1 - 7 for "createUser$" effect (works very similarly, mind using correct flattening stream operator)
   createUser$ = undefined;
@@ -63,13 +62,13 @@ export class UserEffects {
   // TODO 11: implement steps 1 - 7 for "removeUser$" effect (works very similarly, mind using correct flattening stream operator)
   removeUser$ = undefined;
 
-  // TODO 12: for "loadUsers$": inject store into the service
+  // TODO 12: for "loadUsers$": inject the Store into the effect class (constructor injection)
 
-  // TODO 13: for "loadUsers$": add additional "concatMap" after "ofType" operator
+  // TODO 13: for "loadUsers$": add additional "concatLatestFrom" operator after "ofType" operator
 
-  // TODO 14: for "loadUsers$": the "concatMap" will return the stream of original action (wrapped with "of()") piped into "withLatestFrom" RxJs operator
+  // TODO 14: for "loadUsers$": the "concatLatestFrom" will be called with "action" as and argument
 
-  // TODO 15: for "loadUsers$": the "withLatestFrom" will retrieve isAdmin value from store using a selector
+  // TODO 15: for "loadUsers$": the "concatLatestFrom" will retrieve and return isAdmin value from the Store using the "selectIsAdmin" selector
 
   // TODO 17: for "loadUsers$": the stream will be changed from "action" to "[action, isAdmin]", please update following operators accordingly
 
@@ -78,7 +77,7 @@ export class UserEffects {
 
   // before we proceed further, try to run npm run lint to make sure implementation follows all the best practices
 
-  // TODO 19: let's explore error handling of the createUser$" stream, first lets add new last operator "tap(v => console.log('tap next', v), err => console.error('tap error', err), () => console.log('tap done'))" to its .pipe()
+  // TODO 19: let's explore error handling of the createUser$" stream, first lets add new LAST operator "tap(v => console.log('tap next', v), err => console.error('tap error', err), () => console.log('tap done'))" to its .pipe()
 
   // TODO 20: let's explore what would happen if we make "createUser$" backend request fail (we can use "throwError" RxJs operator instead of service call and pass in "new Error('404')")
   // let's try to create couple of users after that change (check out Chrome dev tools console)
