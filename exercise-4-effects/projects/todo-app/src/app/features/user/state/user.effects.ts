@@ -8,7 +8,7 @@ import {
   concatMap,
   map,
   switchMap,
-  tap,
+  tap
 } from 'rxjs';
 
 import { UserIntegrationService } from '../services/user-integration.service';
