@@ -3,9 +3,9 @@ import { getSelectors, RouterReducerState } from '@ngrx/router-store';
 
 import { routerFeatureKey, State } from './router.reducer';
 
-export const selectRouter = createFeatureSelector<
-  RouterReducerState<any>
->(routerFeatureKey);
+export const selectRouter = createFeatureSelector<RouterReducerState<any>>(
+  routerFeatureKey
+);
 
 const {
   selectQueryParams, // select the current route query params

@@ -26,9 +26,9 @@ export interface State {}
 
 // TODO 2: add additional properties to the "State" interface, "loading" flag, "error" message as string (or null) and "editedProductId" which can be number (or null)
 
-// TODO 3: define and export "selectId" function for the entity adapter which will accept product and return the id property
+// TODO 3: define "selectId" function for the entity adapter which will accept product and return the id property
 
-// TODO 4: define and export "sortComparer" function for the entity adapter, for example sort by product name, which will accept 2 arguments of type product and use "localeCompare" on their "name" property
+// TODO 4: define "sortComparer" function for the entity adapter, for example sort by product name, which will accept 2 arguments of type product and use "localeCompare" on their "name" property
 
 // TODO 5: create entity adapter using "createEntityAdapter" with generic type of "Product" and pass in previously created ID selector and sort function as options
 // use IDE code completion to see what properties need to be passed in the options object
