@@ -7,4 +7,3 @@ export const routerFeatureKey = 'router';
 export interface State {
   router: RouterReducerState<any>;
 }
-

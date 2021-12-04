@@ -34,13 +34,13 @@ export class TodoComponent implements OnInit {
 
   newTodoTitle: string;
 
-  constructor(private store: Store<{}>) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
-    this.todos = this.store.pipe(select(selectTodos));
-    this.todosCount = this.store.pipe(select(selectTodosCount));
-    this.todosFilter = this.store.pipe(select(selectTodoFilter));
-    this.todosEditedTodo = this.store.pipe(select(selectEditedTodo));
+    this.todos = this.store.select(selectTodos);
+    this.todosCount = this.store.select(selectTodosCount);
+    this.todosFilter = this.store.select(selectTodoFilter);
+    this.todosEditedTodo = this.store.select(selectEditedTodo);
   }
 
   addTodo(form: NgForm) {

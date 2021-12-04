@@ -31,13 +31,13 @@ export class ProductComponent implements OnInit {
 
   newProduct: Partial<Product> | null = null;
 
-  constructor(private store: Store<{}>) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
-    this.error = this.store.pipe(select(selectProductError));
-    this.loading = this.store.pipe(select(selectProductLoading));
-    this.products = this.store.pipe(select(selectProductItems));
-    this.productsEditedProduct = this.store.pipe(select(selectEditedProduct));
+    this.error = this.store.select(selectProductError);
+    this.loading = this.store.select(selectProductLoading);
+    this.products = this.store.select(selectProductItems);
+    this.productsEditedProduct = this.store.select(selectEditedProduct);
 
     this.store.dispatch(loadProducts());
   }
