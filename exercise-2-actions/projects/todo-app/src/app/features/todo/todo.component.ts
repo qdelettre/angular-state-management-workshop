@@ -30,7 +30,8 @@ export class TodoComponent {
 
   addTodo(form: NgForm) {
     if (form.valid) {
-      // TODO 10: dispatch appropriate action with correct payload to create new todo item (the input is stored in "this.newTodoTitle")
+      // TODO 10: dispatch appropriate action with correct payload to create new todo item
+      // hint: the input is stored in "this.newTodoTitle"
 
       this.newTodoTitle = '';
       form.resetForm();
