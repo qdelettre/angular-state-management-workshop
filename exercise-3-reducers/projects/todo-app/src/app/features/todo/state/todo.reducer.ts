@@ -24,25 +24,25 @@ export interface State {} // tslint:disable-line
 // 'Implement amazing features for users'
 
 // TODO 4: define and export "todoReducer" const using "createReducer" NgRx factory
-const todoReducer = undefined;
+export const todoReducer = undefined;
 
 // TODO 5: pass in initialState as a first argument
 
 // TODO 6: add "on(<some action>, (state, action) => { return state; })" handler (actions were imported as TodoActions)
 
 // TODO 7: implement this for a real action eg "filterTodos" which re-uses whole state and overwrites "todoFilter" with the action payload value
-// the 8th step is at the end of this file
+// hint: try to destructure new filter value from action funcion argument and use ({}) shorthand syntax to return new state object
+
+// the 8th step is in todo.module.ts file
 
 // try to implement all other while exploring different ways of creating new state using immutable approach
-// TODO 10: implement "on" handlers for addTodoWithId
-// TODO 11: implement "on" handlers for toggleTodo
-// TODO 12: implement "on" handlers for removeTodo
-// TODO 13: implement "on" handlers for editTodo
-// TODO 14: implement "on" handlers for cancelEditTodo
-// TODO 15: implement "on" handlers for updateTodo
-// TODO 16: implement "on" handlers for removeDoneTodos
+// TODO 9: implement "on" handlers for addTodoWithId
+// TODO 10: implement "on" handlers for toggleTodo
+// TODO 11: implement "on" handlers for removeTodo
+// TODO 12: implement "on" handlers for editTodo
+// TODO 13: implement "on" handlers for cancelEditTodo
+// TODO 14: implement "on" handlers for updateTodo
+// TODO 15: implement "on" handlers for removeDoneTodos
 
-// TODO 17: try to run tests to see if adding implementation fulfilled their expectation
-
-// TODO 8: define and export "reducer" function which accepts state and action and returns "todoReducer" called with state and action
-// the 9th step is in todo.module.ts file
+// TODO 16: try to run tests to see if adding implementation fulfilled their expectation
+// TODO 17: try to ng lint to see if your implementation follows the best practices
