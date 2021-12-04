@@ -76,6 +76,8 @@ export class UserEffects {
   // TODO 18: for "loadUsers$": pass "isAdmin" into the integration service "load()" method and check the running application
   // once done and tried in application, please remove isAdmin logic so we again retrieve all users...
 
+  // before we proceed further, try to run npm run lint to make sure implementation follows all the best practices
+
   // TODO 19: let's explore error handling of the createUser$" stream, first lets add new last operator "tap(v => console.log('tap next', v), err => console.error('tap error', err), () => console.log('tap done'))" to its .pipe()
 
   // TODO 20: let's explore what would happen if we make "createUser$" backend request fail (we can use "throwError" RxJs operator instead of service call and pass in "new Error('404')")
