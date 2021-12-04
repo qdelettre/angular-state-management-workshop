@@ -12,9 +12,8 @@ import {
   toggleTodo,
   updateTodo
 } from './state/todo.actions';
-
 import { Todo, TodoFilter } from './state/todo.model';
-import { selectTodosView } from '../../../../../../../exercise-finished/projects/todo-app/src/app/features/todo/state/todo.selectors';
+import { selectTodosView } from './state/todo.selectors';
 
 @Component({
   selector: 'todo-todo',
