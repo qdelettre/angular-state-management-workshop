@@ -34,6 +34,7 @@ const userReducer = createReducer(
 
   on(UserActions.loadUsersSuccess, (state, { users }) => {
     const newState = {
+      ...state,
       items: users.reduce((result, user) => {
         result[user.id] = user;
         return result;
@@ -46,6 +47,7 @@ const userReducer = createReducer(
   }),
 
   on(UserActions.loadUsersFailure, (state, { error }) => ({
+    ...state,
     items: {},
     loading: false,
     error,
@@ -127,6 +129,7 @@ const userReducer = createReducer(
 
   on(UserActions.removeUserSuccess, (state, { id }) => {
     const newState = {
+      ...state,
       items: {
         ...state.items
       },
