@@ -6,13 +6,7 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { SharedModule } from '../../shared/shared.module';
 
-import {
-  selectTodos,
-  selectTodosCount,
-  selectTodoFilter,
-  selectEditedTodo
-} from './state/todo.selectors';
-import { Todo, TodoFilter } from './state/todo.model';
+import { selectTodosView } from './state/todo.selectors';
 import { State } from './state/todo.reducer';
 import { TodoComponent } from './todo.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
@@ -56,10 +50,12 @@ describe('TodoComponent', () => {
     component = fixture.componentInstance;
     store = TestBed.inject(MockStore);
 
-    // TODO 6: override all selectors used in component with some test data and call "fixture.detectChanges")
-    // when overriding selectors, assign overridden selector to a variable (eg "mockSelectTodos") which will be declared at the top of the test and re-assigned for every new test in before each
+    // TODO 6: override selector used in the component with some test data and call "fixture.detectChanges"
+    // selectors are overridden using the store (MockStore) "overrideSelector" method which accepts selector and mock data
+    // when overriding selectors, assign overridden selector to a variable (eg "mockSelectTodosView")
+    // which will be declared at the top of the test and re-assigned for every new test in before each (here)
     // the selector variable will be of typed based on what it should return
-    // eg "MemoizedSelector<State, TodoFilter>" for mockSelectTodoFilter
+    // eg "MemoizedSelector<State, ReturnType<typeof selectTodosView>>" for mockSelectTodoFilter
   });
 
   it('should render todo correct todo items', () => {
@@ -70,7 +66,7 @@ describe('TodoComponent', () => {
 
   it('displays correct description based on filter: "DONE"', () => {
     // some tests need other data than provided in the "beforeEach" with "overrideSelector"
-    // in that case we can previously stored overridden selector (eg "mockSelectTodos")
+    // in that case we can previously stored overridden selector (eg "mockSelectTodosView")
     // and use "setResult()" method followed by the "store.refreshState()" and "fixture.detectChanges()"
     // this will only have impact on the printed label as data was mocked by other selectors (use provided "getDescription()" method to check for the rendered label)
   });
