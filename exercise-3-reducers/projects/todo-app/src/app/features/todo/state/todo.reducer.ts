@@ -45,4 +45,4 @@ export const todoReducer = undefined;
 // TODO 15: implement "on" handlers for removeDoneTodos
 
 // TODO 16: try to run tests to see if adding implementation fulfilled their expectation
-// TODO 17: try to ng lint to see if your implementation follows the best practices
+// TODO 17: try to "npm run lint" to see if your implementation follows the best practices

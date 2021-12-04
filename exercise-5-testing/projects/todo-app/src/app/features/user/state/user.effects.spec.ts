@@ -58,8 +58,10 @@ describe('UserEffects', () => {
     // hint: the error object is the third argument of hot / cold helpers, eg cold('--#|', {}, new Error('oops'))
   });
 
+  // TODO 18: try to "npm run lint" to see if your implementation follows the best practices
+
   it('it delivers correct (second) response even if first one comes in as last', () => {
-    // TODO 18: BONUS exercise - effects with switchMap (race conditions)
+    // TODO 19: BONUS exercise - effects with switchMap (race conditions)
     // similar to "loads users with successful backend request" but we will emit TWO "loadUsers()" actions, eg hot('-a-b', { a: loadUsers(), b: loadUsers() })
     // then we will also mock TWO backend responses (calling "mockReturnValueOnce" TWO times) with two DIFFERENT responses
     // make sure that the FIRST backend response takes MUCH LONGER time than the SECOND backend response (using more - or even 100ms in the marble syntax)

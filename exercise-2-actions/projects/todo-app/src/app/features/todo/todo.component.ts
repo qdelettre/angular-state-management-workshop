@@ -67,7 +67,7 @@ export class TodoComponent {
     // TODO 17: dispatch appropriate action with correct payload to update filter value
   }
 
-  // TODO 18: try to run npm run watch to run the tests and see if the tests are passing now
+  // TODO 18: try to run "npm run watch" to run the tests and see if the tests are passing now
 
-  // TODO 19: try to run ng lint to see if your actions follow best practices (eg naming)
+  // TODO 19: try to "npm run lint" to see if your actions follow best practices (eg naming)
 }

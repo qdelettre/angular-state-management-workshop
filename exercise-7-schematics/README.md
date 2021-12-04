@@ -44,7 +44,7 @@ In this exercise were going to explore how to generate NgRx state features using
 13. Inject the `Store` and use previously created selectors in the  `features/user/user.component.ts` to retrieve list of `User` 
     and render it in the template using `*ngFor` (simple rendering with `<div>` and printing of strings using `{{ }}` is sufficient for our case)
 14. Implement `ngOnInit` lifecycle hook in the `features/user/user.component.ts` to dispatch initial action to trigger retrieving of users from backend
-
+15. Try to "npm run lint" to see if your implementation follows the best practices
      
    
 ## How to use exercises

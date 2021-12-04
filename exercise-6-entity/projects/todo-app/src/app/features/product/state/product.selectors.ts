@@ -16,3 +16,5 @@ export const selectProductEntities = undefined;
 
 // TODO 19: implement selector with help of feature selector and previously created selectors to deliver perfect view state for product component
 export const selectProductView = undefined;
+
+// TODO 20: try to "npm run lint" to see if your implementation follows the best practices
