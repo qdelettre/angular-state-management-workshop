@@ -31,20 +31,20 @@ describe('TodoComponent', () => {
 
   const getCount = () =>
     fixture.debugElement
-    .query(By.css('.controls > button:last-of-type'))
-    .nativeElement.textContent.trim();
+      .query(By.css('.controls > button:last-of-type'))
+      .nativeElement.textContent.trim();
 
   const getDescription = () =>
     fixture.debugElement
-    .query(By.css('.controls > span'))
-    .nativeElement.textContent.trim();
+      .query(By.css('.controls > span'))
+      .nativeElement.textContent.trim();
 
   const getTodoItems = () =>
     fixture.debugElement.queryAll(By.css('todo-todo-item'));
 
   const getTodoItemText = (index: number) =>
     fixture.debugElement
-    .queryAll(By.css('todo-todo-item'))
+      .queryAll(By.css('todo-todo-item'))
       [index].query(By.css('p')).nativeElement.textContent;
 
   beforeEach(
