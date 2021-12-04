@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
 
 import { Product } from './state/product.model';
-import {
-  selectEditedProduct,
-  selectProductItems,
-  selectProductError,
-  selectProductLoading
-} from './state/product.selectors';
+import { selectProductView } from './state/product.selectors';
 import {
   removeProduct,
   loadProducts,
@@ -24,21 +18,13 @@ import {
   styleUrls: ['./product.component.scss']
 })
 export class ProductComponent implements OnInit {
-  loading: Observable<boolean>;
-  error: Observable<string>;
-  products: Observable<Product[]>;
-  productsEditedProduct: Observable<Partial<Product> | undefined>;
+  view$ = this.store.select(selectProductView);
 
   newProduct: Partial<Product> | null = null;
 
   constructor(private store: Store) {}
 
   ngOnInit() {
-    this.error = this.store.select(selectProductError);
-    this.loading = this.store.select(selectProductLoading);
-    this.products = this.store.select(selectProductItems);
-    this.productsEditedProduct = this.store.select(selectEditedProduct);
-
     this.store.dispatch(loadProducts());
   }
 

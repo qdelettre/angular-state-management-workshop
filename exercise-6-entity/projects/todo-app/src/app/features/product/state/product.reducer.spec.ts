@@ -1,4 +1,4 @@
-import { reducer, initialState } from './product.reducer';
+import { productReducer, initialState } from './product.reducer';
 import { createProductSuccess, loadProductsSuccess } from './product.actions';
 
 describe('Product Reducer', () => {
@@ -6,7 +6,7 @@ describe('Product Reducer', () => {
     it('should return the previous state', () => {
       const action = {} as any;
 
-      const result = reducer(initialState, action);
+      const result = productReducer(initialState, action);
 
       expect(result).toBe(initialState);
     });
@@ -21,7 +21,7 @@ describe('Product Reducer', () => {
         ]
       });
 
-      const result = reducer(initialState, action);
+      const result = productReducer(initialState, action);
 
       expect(result.ids.length).toBe(2);
       expect(Object.values(result.entities).length).toBe(2);
@@ -34,7 +34,7 @@ describe('Product Reducer', () => {
         product: { id: 1, name: 'product 1', description: 'description 1' }
       });
 
-      const result = reducer(initialState, action);
+      const result = productReducer(initialState, action);
 
       expect(result.ids.length).toBe(1);
       expect(Object.values(result.entities).length).toBe(1);

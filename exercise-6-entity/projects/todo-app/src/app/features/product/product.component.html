@@ -12,26 +12,28 @@
   Create new product
 </button>
 
-<mat-spinner diameter="55" *ngIf="loading | async"></mat-spinner>
-<p class="error" *ngIf="error | async as errorMessage">{{ errorMessage }}</p>
+<ng-container *ngIf="view$ | async as v">
+  <mat-spinner diameter="55" *ngIf="v.loading"></mat-spinner>
+  <p class="error" *ngIf="v.error">{{ v.error }}</p>
 
-<todo-product-editor
-  *ngIf="newProduct"
-  [product]="newProduct"
-  (save)="createNewProductSave($event)"
-  (cancel)="createNewProductCancel()"
-></todo-product-editor>
+  <todo-product-editor
+    *ngIf="newProduct"
+    [product]="newProduct"
+    (save)="createNewProductSave($event)"
+    (cancel)="createNewProductCancel()"
+  ></todo-product-editor>
 
-<todo-product-editor
-  *ngIf="productsEditedProduct | async as editedProduct"
-  [product]="editedProduct"
-  (save)="editProductSave($event)"
-  (cancel)="editProductCancel()"
-></todo-product-editor>
+  <todo-product-editor
+    *ngIf="v.editedProduct"
+    [product]="v.editedProduct"
+    (save)="editProductSave($event)"
+    (cancel)="editProductCancel()"
+  ></todo-product-editor>
 
-<todo-product-item
-  *ngFor="let product of products | async"
-  [product]="product"
-  (edit)="editProduct($event)"
-  (remove)="removeProduct($event)"
-></todo-product-item>
+  <todo-product-item
+    *ngFor="let product of v.products"
+    [product]="product"
+    (edit)="editProduct($event)"
+    (remove)="removeProduct($event)"
+  ></todo-product-item>
+</ng-container>

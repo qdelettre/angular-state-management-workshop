@@ -20,7 +20,7 @@ import { ProductEditorComponent } from './product-editor/product-editor.componen
   imports: [
     SharedModule,
     ProductRoutingModule,
-    StoreModule.forFeature(fromProduct.productFeatureKey, fromProduct.reducer),
+    StoreModule.forFeature(fromProduct.productFeatureKey, fromProduct.productReducer),
     EffectsModule.forFeature([ProductEffects])
   ]
 })

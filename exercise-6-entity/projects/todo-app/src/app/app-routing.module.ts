@@ -13,16 +13,6 @@ const routes: Routes = [
       import('./features/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'todo',
-    loadChildren: () =>
-      import('./features/todo/todo.module').then(m => m.TodoModule)
-  },
-  {
-    path: 'user',
-    loadChildren: () =>
-      import('./features/user/user.module').then(m => m.UserModule)
-  },
-  {
     path: 'product',
     loadChildren: () =>
       import('./features/product/product.module').then(m => m.ProductModule)

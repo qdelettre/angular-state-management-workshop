@@ -40,7 +40,7 @@ export const adapter: EntityAdapter<Product> = undefined;
 export const initialState: State = undefined;
 
 // TODO 7: create product reducer using "createReducer" method and pass in initial state
-const productReducer = undefined;
+export const productReducer = undefined;
 
 // TODO 8: create reducer handler ( "on" ) for "loadProductsSuccess" action which will use "adapter.setAll" method
 // the handler should also set "loading" to false and unset "error" and "editedProductId" values (set to null)
@@ -67,7 +67,3 @@ const productReducer = undefined;
 // which will set "loading" to false and set "error" and unset "editedProductId" values (set to null)
 
 // there are more to-do comments in the product.selectors.ts file
-
-export function reducer(state: State | undefined, action: Action) {
-  return productReducer(state, action);
-}
