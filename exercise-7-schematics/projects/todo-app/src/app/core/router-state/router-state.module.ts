@@ -1,16 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { StoreModule } from '@ngrx/store';
-
-import { routerFeatureKey, routerReducer } from './state/router.reducer';
-
-export * from './state/router.selectors';
+import { routerReducer } from '@ngrx/router-store';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    StoreModule.forFeature(routerFeatureKey, routerReducer)
-  ]
+  imports: [StoreModule.forFeature('router', routerReducer)]
 })
 export class RouterStateModule {}

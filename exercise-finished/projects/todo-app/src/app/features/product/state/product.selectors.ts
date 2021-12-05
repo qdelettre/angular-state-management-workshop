@@ -1,5 +1,7 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 
+import { selectQueryParamId } from '../../../core/router-state/state/router.selectors';
+
 import { productFeatureKey, State, adapter } from './product.reducer';
 
 const {
@@ -27,9 +29,10 @@ export const selectProductView = createSelector(
   selectProductFeature,
   selectProductItems,
   selectProductEntities,
-  (state, products, productEntities) => ({
+  selectQueryParamId, // example of how to get router state, try adding ?id=1 to the url
+  (state, products, productEntities, id) => ({
     ...state,
     products,
-    editedProduct: productEntities[state.editedProductId]
+    editedProduct: productEntities[state.editedProductId || id]
   })
 );
