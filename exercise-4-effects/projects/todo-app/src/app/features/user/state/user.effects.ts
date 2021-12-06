@@ -64,7 +64,7 @@ export class UserEffects {
 
   // TODO 12: for "loadUsers$": inject the Store into the effect class (constructor injection)
 
-  // TODO 13: for "loadUsers$": add additional "concatLatestFrom" operator after "ofType" operator
+  // TODO 13: for "loadUsers$": add additional "concatLatestFrom"  operator after "ofType" operator (operator is imported from @ngrx/effects)
 
   // TODO 14: for "loadUsers$": the "concatLatestFrom" will be called with "action" as and argument
 
