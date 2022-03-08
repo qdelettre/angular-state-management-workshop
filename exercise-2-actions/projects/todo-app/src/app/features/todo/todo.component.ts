@@ -70,4 +70,6 @@ export class TodoComponent {
   // TODO 18: try to run "npm run watch" to run the tests and see if the tests are passing now
 
   // TODO 19: try to "npm run lint" to see if your actions follow best practices (eg naming)
+
+  // TODO 20: try to break lint by removing "origin" part from one of your actions type
 }
