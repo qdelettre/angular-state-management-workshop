@@ -75,7 +75,7 @@ describe('Todo Reducer', () => {
     it('should set the filter', () => {
       const action = filterTodos({ filter: 'ACTIVE' });
 
-      const result = reducer(initialState, action);
+      const result = todoReducer(initialState, action);
 
       expect(result.todoFilter).toBe('ACTIVE');
     });
@@ -96,7 +96,7 @@ describe('Todo Reducer', () => {
     it('should set the edited todo id', () => {
       const action = cancelEditTodo();
 
-      const result = reducer(initialState, action);
+      const result = todoReducer(initialState, action);
 
       expect(result.editedTodoId).toBe(null);
     });
@@ -109,7 +109,7 @@ describe('Todo Reducer', () => {
         todo: { id, title: 'Updated', done: false }
       });
 
-      const result = reducer(initialState, action);
+      const result = todoReducer(initialState, action);
 
       expect(result.editedTodoId).toBe(null);
       expect(result.items[id].title).toBe('Updated');
