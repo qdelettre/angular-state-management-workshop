@@ -1,5 +1,5 @@
 import uuid from 'uuid/v4';
-import { reducer, State } from './todo.reducer';
+import { todoReducer, State } from './todo.reducer';
 import {
   addTodo,
   editTodo,
@@ -37,7 +37,7 @@ describe('Todo Reducer', () => {
     it('should return the previous state', () => {
       const action = {} as any;
 
-      const result = reducer(MOCK_STATE, action);
+      const result = todoReducer(MOCK_STATE, action);
 
       expect(result).toBe(MOCK_STATE);
     });
