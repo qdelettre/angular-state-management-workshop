@@ -13,8 +13,7 @@
     "e2e": "ng e2e",
     "format:write": "prettier projects/**/*.{js,ts,json,html,scss,md} --write",
     "format:test": "prettier projects/**/*.{js,ts,json,html,scss,md} --list-different",
-    "postinstall": "ngcc",
-    "lint": "ng lint"
+    "postinstall": "ngcc"
   },
   "private": true,
   "dependencies": {
