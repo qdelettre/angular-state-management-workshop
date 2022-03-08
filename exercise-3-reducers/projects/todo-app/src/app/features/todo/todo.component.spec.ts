@@ -5,15 +5,24 @@ import { MockStore, provideMockStore } from '@ngrx/store/testing';
 
 import { SharedModule } from '../../shared/shared.module';
 
-import {
-  selectTodos,
-  selectTodosCount,
-  selectTodoFilter,
-  selectEditedTodo
-} from './state/todo.selectors';
+import { selectTodosView } from './state/todo.selectors';
 import { TodoComponent } from './todo.component';
 import { TodoItemComponent } from './todo-item/todo-item.component';
 import { TodoEditorComponent } from './todo-editor/todo-editor.component';
+
+const VIEW_SELECTOR_MOCK_DATA: any = {
+  items: {
+    '1': { id: '1', title: 'Test 1', done: false },
+    '2': { id: '2', title: 'Test 2', done: false }
+  },
+  todos: [
+    { id: '1', title: 'Test 1', done: true },
+    { id: '2', title: 'Test 2', done: false }
+  ],
+  todoFilter: 'ALL',
+  editedTodoId: null,
+  editedTodo: undefined
+};
 
 describe('TodoComponent', () => {
   let component: TodoComponent;
@@ -55,13 +64,7 @@ describe('TodoComponent', () => {
   });
 
   it('should render todos', () => {
-    store.overrideSelector(selectTodos, [
-      { id: '1', title: 'Test 1', done: true },
-      { id: '2', title: 'Test 2', done: false }
-    ]);
-    store.overrideSelector(selectTodosCount, 2);
-    store.overrideSelector(selectTodoFilter, 'ALL');
-    store.overrideSelector(selectEditedTodo, null);
+    store.overrideSelector(selectTodosView, { ...VIEW_SELECTOR_MOCK_DATA });
     fixture.detectChanges();
 
     expect(getTodoItems().length).toBe(2);
@@ -71,10 +74,10 @@ describe('TodoComponent', () => {
   });
 
   it('displays correct description based on filter', () => {
-    store.overrideSelector(selectTodos, []);
-    store.overrideSelector(selectTodosCount, 2);
-    store.overrideSelector(selectTodoFilter, 'DONE');
-    store.overrideSelector(selectEditedTodo, null);
+    store.overrideSelector(selectTodosView, {
+      ...VIEW_SELECTOR_MOCK_DATA,
+      todoFilter: 'DONE'
+    });
     fixture.detectChanges();
 
     expect(getDescription()).toBe('Displaying done todos');
@@ -82,10 +85,10 @@ describe('TodoComponent', () => {
   });
 
   it('displays correct description based on filter', () => {
-    store.overrideSelector(selectTodos, []);
-    store.overrideSelector(selectTodosCount, 2);
-    store.overrideSelector(selectTodoFilter, 'ACTIVE');
-    store.overrideSelector(selectEditedTodo, null);
+    store.overrideSelector(selectTodosView, {
+      ...VIEW_SELECTOR_MOCK_DATA,
+      todoFilter: 'ACTIVE'
+    });
     fixture.detectChanges();
 
     expect(getDescription()).toBe('Displaying active todos');
