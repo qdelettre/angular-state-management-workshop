@@ -55,7 +55,7 @@ describe('TodoComponent', () => {
     // when overriding selectors, assign overridden selector to a variable (eg "mockSelectTodosView")
     // which will be declared at the top of the test and re-assigned for every new test in before each (here)
     // the selector variable will be of typed based on what it should return
-    // eg "MemoizedSelector<State, ReturnType<typeof selectTodosView>>" for mockSelectTodoFilter
+    // eg "MemoizedSelector<State, ReturnType<typeof selectTodosView>>" for mockSelectTodoView
   });
 
   it('should render todo correct todo items', () => {
