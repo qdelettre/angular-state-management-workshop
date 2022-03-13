@@ -62,6 +62,7 @@ export class UserEffects {
   // TODO 11: implement steps 1 - 7 for "removeUser$" effect (works very similarly, mind using correct flattening stream operator)
   removeUser$ = undefined;
 
+  // now we're going to adjust already existing "loadUsers$" effect
   // TODO 12: for "loadUsers$": inject the Store into the effect class (constructor injection)
 
   // TODO 13: for "loadUsers$": add additional "concatLatestFrom"  operator after "ofType" operator (operator is imported from @ngrx/effects)
@@ -70,10 +71,11 @@ export class UserEffects {
 
   // TODO 15: for "loadUsers$": the "concatLatestFrom" will retrieve and return isAdmin value from the Store using the "selectIsAdmin" selector
 
-  // TODO 17: for "loadUsers$": the stream will be changed from "action" to "[action, isAdmin]", please update following operators accordingly
+  // TODO 16: for "loadUsers$": the stream will be changed from "action" to "[action, isAdmin]", please update following operators accordingly
 
-  // TODO 18: for "loadUsers$": pass "isAdmin" into the integration service "load()" method and check the running application
-  // once done and tried in application, please remove isAdmin logic so we again retrieve all users...
+  // TODO 17: for "loadUsers$": pass "isAdmin" into the integration service "load()" method and check the running application
+
+  // TODO 18: once done and tried in application, please remove isAdmin logic so we again retrieve all users...
 
   // before we proceed further, try to run "npm run lint" to make sure implementation follows all the best practices
 
