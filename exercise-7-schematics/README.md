@@ -29,11 +29,11 @@ In this exercise were going to explore how to generate NgRx state features using
     ```
 4. Run `ng g --help` and see that the output still references `@ngrx/schematics` because we set it as default collection,
    so we don't have to type whole collection name every time we want to generate something using `ng g`.
-5. Generate new lazy loaded module for user feature using `ng g module features/user --route user --module app.module.ts` 
+5. Generate new lazy loaded module for user feature using `ng g module features/user --route user --module app` 
    and try to navigate to user route using main navigation.
 6. Run `ng g feature --help` to explore all the available options for generating NgRx state features. We'll be using
    `-c` (`--creators`) to use new NgRx factory functions and `-a` (`--api`) to generate effects and API action stubs.
-7. Generate new NgRx state feature for the `user` lazy feature using `ng g feature features/user/state/user -a -c --module features/user/user.module.ts`
+7. Generate new NgRx state feature for the `user` lazy feature using `ng g feature features/user/state/user -a -c --module features/user/user`
 8. Define and export `User` interface in the `features/user/state/user.model.ts` with `id: number`, `username: string` properties
 9. Generate backend integration (API) service using `ng g service features/user/user` and implement a `load()` method 
    which will use Angular `HttpClient` to retrieve list of users (previously created `User` interface) from `http://localhost:4300/users` endpoint
