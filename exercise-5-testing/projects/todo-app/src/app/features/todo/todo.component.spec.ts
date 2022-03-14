@@ -39,7 +39,8 @@ describe('TodoComponent', () => {
     waitForAsync(() => {
       TestBed.configureTestingModule({
         imports: [NoopAnimationsModule, SharedModule],
-        providers: [provideMockStore()],
+        // TODO 6: provide empty mock store (without initial state)
+        providers: [],
         declarations: [TodoComponent, TodoItemComponent, TodoEditorComponent]
       }).compileComponents();
     })
@@ -48,9 +49,10 @@ describe('TodoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TodoComponent);
     component = fixture.componentInstance;
+    // TODO 7: get MockStore instance from TestBed using inject and store it in the local "store" variable (already pre-defined)
     store = TestBed.inject(MockStore);
 
-    // TODO 6: override selector used in the component with some test data and call "fixture.detectChanges"
+    // TODO 8: override selector used in the component with some test data and call "fixture.detectChanges"
     // selectors are overridden using the store (MockStore) "overrideSelector" method which accepts selector and mock data
     // when overriding selectors, assign overridden selector to a variable (eg "mockSelectTodosView")
     // which will be declared at the top of the test and re-assigned for every new test in before each (here)
@@ -59,7 +61,7 @@ describe('TodoComponent', () => {
   });
 
   it('should render todo correct todo items', () => {
-    // TODO 7: implement all todo component tests
+    // TODO 9: implement all todo component tests
     // use helper functions like "getTodoItems()" (find them at the top of the test) to check if component rendered the state correctly
     // eg: correct count of rendered todo items, todo item text, correct filter description based on filter value, ...
   });

@@ -41,27 +41,27 @@ describe('UserEffects', () => {
   });
 
   it('loads users with successful backend request', () => {
-    // TODO 8: implement "loadUsers$" effect test, start by using "scheduler.run(helpers => {})" (whole test runs in scheduler)
-    // TODO 9: retrieve "expectObservable", "hot" and "cold" helper functions from "helpers" (try to use destructuring)
-    // TODO 10: mock value of "actions$" stream using "hot" helper... the stream should emit some empty frames followed by event "a", the variable was already defined at the beginning of the test
-    // TODO 11: pass in object as a second parameter of "hot", object will contain "a" property (based on "a" event) with the desired action
+    // TODO 10: implement "loadUsers$" effect test, start by using "scheduler.run(helpers => {})" (whole test runs in scheduler)
+    // TODO 11: retrieve "expectObservable", "hot" and "cold" helper functions from "helpers" (try to use destructuring)
+    // TODO 12: mock value of "actions$" stream using "hot" helper... the stream should emit some empty frames followed by event "a", the variable was already defined at the beginning of the test
+    // TODO 13: pass in object as a second parameter of "hot", object will contain "a" property (based on "a" event) with the desired action
     // this action will be then emitted in test
-    // TODO 12: use "mockReturnValue" on the "load" method of the "userIntegrationServiceMock"
-    // TODO 13: the mocked return value should be "cold" observable which emits some empty frames followed by event "a" and then completes "|"
-    // TODO 14: pass in object as a second parameter of "cold", object will contain "a" property (based on "a" event) with the desired service response ( users array )
-    // TODO 15: use "expectObservable" and pass in "effects.loadUsers$" effect and expect it "toBe" stream with sum of empty frames of previous 2 streams followed by "a" event
-    // TODO 16: pass in object as a second parameter of "toBe", object will contain "a" property (based on "a" event) with expected result success action with appropriate payload (because backend request succeeded)
+    // TODO 14: use "mockReturnValue" on the "load" method of the "userIntegrationServiceMock"
+    // TODO 15: the mocked return value should be "cold" observable which emits some empty frames followed by event "a" and then completes "|"
+    // TODO 16: pass in object as a second parameter of "cold", object will contain "a" property (based on "a" event) with the desired service response ( users array )
+    // TODO 17: use "expectObservable" and pass in "effects.loadUsers$" effect and expect it "toBe" stream with sum of empty frames of previous 2 streams followed by "a" event
+    // TODO 18: pass in object as a second parameter of "toBe", object will contain "a" property (based on "a" event) with expected result success action with appropriate payload (because backend request succeeded)
   });
 
   it('loads users with failed backend request', () => {
-    // TODO 17: implement "loadUsers$" effect test for failed backend request
+    // TODO 19: implement "loadUsers$" effect test for failed backend request
     // hint: the error object is the third argument of hot / cold helpers, eg cold('--#|', {}, new Error('oops'))
   });
 
-  // TODO 18: try to "npm run lint" to see if your implementation follows the best practices
+  // TODO 20: try to "npm run lint" to see if your implementation follows the best practices
 
   it('it delivers correct (second) response even if first one comes in as last', () => {
-    // TODO 19: BONUS exercise - effects with switchMap (race conditions)
+    // TODO 21: BONUS exercise - effects with switchMap (race conditions)
     // similar to "loads users with successful backend request" but we will emit TWO "loadUsers()" actions, eg hot('-a-b', { a: loadUsers(), b: loadUsers() })
     // then we will also mock TWO backend responses (calling "mockReturnValueOnce" TWO times) with two DIFFERENT responses
     // make sure that the FIRST backend response takes MUCH LONGER time than the SECOND backend response (using more - or even 100ms in the marble syntax)
