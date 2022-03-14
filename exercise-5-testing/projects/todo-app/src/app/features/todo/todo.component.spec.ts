@@ -35,16 +35,14 @@ describe('TodoComponent', () => {
       .queryAll(By.css('todo-todo-item'))
       [todoItemIndex].query(By.css('p')).nativeElement.textContent;
 
-  beforeEach(
-    waitForAsync(() => {
-      TestBed.configureTestingModule({
-        imports: [NoopAnimationsModule, SharedModule],
-        // TODO 6: provide empty mock store (without initial state)
-        providers: [],
-        declarations: [TodoComponent, TodoItemComponent, TodoEditorComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [NoopAnimationsModule, SharedModule],
+      // TODO 6: provide empty mock store (without initial state)
+      providers: [],
+      declarations: [TodoComponent, TodoItemComponent, TodoEditorComponent]
+    }).compileComponents();
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(TodoComponent);
@@ -74,7 +72,6 @@ describe('TodoComponent', () => {
     // some tests need other data than provided in the "beforeEach" with "overrideSelector"
     // in that case we can set new data in previously overridden selector (eg "mockSelectTodosView")
     // using the "setResult()" method followed by the "store.refreshState()" and "fixture.detectChanges()"
-
     // SIDE NOTE: OnPush and multiple fixture.detectChanges()
     // please note that even though our component uses "OnPush" change detection strategy,
     // we are able to call "fixture.detectChanges()" more than once! (in before each and in the test)
