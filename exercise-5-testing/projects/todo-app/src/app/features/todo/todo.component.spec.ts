@@ -49,28 +49,29 @@ describe('TodoComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TodoComponent);
     component = fixture.componentInstance;
-    // TODO 7: get MockStore instance from TestBed using inject and store it in the local "store" variable (already pre-defined)
-    store = TestBed.inject(MockStore);
+    // TODO 7: get MockStore instance from TestBed using inject and store it in the local "store" variable
+    store = undefined;
 
-    // TODO 8: override selector used in the component with some test data and call "fixture.detectChanges"
+    // TODO 8: override selector used in the component with some test data
     // selectors are overridden using the store (MockStore) "overrideSelector" method which accepts selector and mock data
     // when overriding selectors, assign overridden selector to a variable (eg "mockSelectTodosView")
     // which will be declared at the top of the test and re-assigned for every new test in before each (here)
-    // the selector variable will be of typed based on what it should return
+    // the selector variable will be of type based on what it should return
     // eg "MemoizedSelector<State, Partial<ReturnType<typeof selectTodosView>>>" for mockSelectTodoView
+    // the mock data should contain only data actually used in the components view
   });
 
   it('should render todo correct todo items', () => {
     // TODO 9: implement all todo component tests
     // use helper functions like "getTodoItems()" (find them at the top of the test) to check if component rendered the state correctly
     // eg: correct count of rendered todo items, todo item text, correct filter description based on filter value, ...
+    // dont forget to call "fixture.detectChanges()" at the beginning of each test(or after overriding of the selector data) to trigger component rendering
   });
 
   it('displays correct description based on filter: "DONE"', () => {
     // some tests need other data than provided in the "beforeEach" with "overrideSelector"
-    // in that case we can previously stored overridden selector (eg "mockSelectTodosView")
-    // and use "setResult()" method followed by the "store.refreshState()" and "fixture.detectChanges()"
-    // this will only have impact on the printed label as data was mocked by other selectors (use provided "getDescription()" method to check for the rendered label)
+    // in that case we can set new data in previously overridden selector (eg "mockSelectTodosView")
+    // using the "setResult()" method followed by the "store.refreshState()" and "fixture.detectChanges()"
   });
 
   it('displays correct description based on filter: "ACTIVE"', () => {
