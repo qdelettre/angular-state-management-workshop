@@ -88,9 +88,10 @@
       }
     }
   },
-  "defaultProject": "todo-app",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   },
   "schematics": {
     "@schematics/angular:component": {

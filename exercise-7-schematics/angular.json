@@ -92,7 +92,6 @@
       }
     }
   },
-  "defaultProject": "todo-app",
   "schematics": {
     "@schematics/angular:component": {
       "style": "scss"

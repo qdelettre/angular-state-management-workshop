@@ -88,9 +88,10 @@
       }
     }
   },
-  "defaultProject": "todo-app",
   "cli": {
-    "defaultCollection": "@ngrx/schematics"
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
   },
   "schematics": {
     "@schematics/angular:component": {
