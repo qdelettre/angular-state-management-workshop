@@ -74,4 +74,5 @@ export class TodoComponent {
   // TODO 20: try to break lint by removing "origin" part from one of your actions type
 
   // TODO 21: refactor TODO events to use "createActionGroup" instead of "createAction" and follow event naming convention
+  // hint: use "TodoPageEvents" as a reference and use it in component AND reducer, then see if app still runs
 }
