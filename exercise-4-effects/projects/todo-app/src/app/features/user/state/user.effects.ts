@@ -27,15 +27,15 @@ export class UserEffects {
 
   // TODO 2: effect is an arrow function which returns a stream of "actions$" with additional operators in pipe
 
-  // TODO 3: use "ofType" operator to only apply this effect to the "loadUsers" actions
+  // TODO 3: use "ofType" operator to only apply this effect to the "UserPageEvents.init" actions
 
   // TODO 4: use correct flattening operator (we're retrieving data from backend API)
 
   // TODO 5: make a "load" request using "userIntegrationService" which returns an array of users
 
-  // TODO 6: in case of success, map the response into "loadUsersSuccess" (in nested pipe, relative to service)
+  // TODO 6: in case of success, map the response into "usersLoadedSuccess" (in nested pipe, relative to service)
 
-  // TODO 7: in case of error, handle the error using "catchError" and return Observable ( "of()" ) "loadUsersFailure"
+  // TODO 7: in case of error, handle the error using "catchError" and return Observable ( "of()" ) "usersLoadedFailure"
   // where we will pass in error as string (using ".toString()") (in nested pipe, relative to service)
 
   // 8th step is in user.module.ts file
