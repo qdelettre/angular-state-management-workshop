@@ -1,5 +1,5 @@
 import { NgForm } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -22,11 +22,11 @@ import { Todo, TodoFilter } from './state/todo.model';
   styleUrls: ['./todo.component.scss']
 })
 export class TodoComponent {
+  private store = inject(Store);
+
   view$ = this.store.select(selectTodosView);
 
   newTodoTitle: string;
-
-  constructor(private store: Store) {}
 
   addTodo(form: NgForm) {
     if (form.valid) {
