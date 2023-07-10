@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { StoreModule } from '@ngrx/store';
+import { provideState, StoreModule } from '@ngrx/store';
 
 import { SharedModule } from '../../shared/shared.module';
 
@@ -13,9 +13,10 @@ import { TodoEditorComponent } from './todo-editor/todo-editor.component';
   declarations: [TodoComponent, TodoItemComponent, TodoEditorComponent],
   imports: [
     SharedModule,
-    TodoRoutingModule
+    TodoRoutingModule,
     // TODO 8: add "StoreModule.forFeature" to the imports and pass in arguments it expects
-  ]
-  // TODO 18: refactor "StoreModule.forFeature" into "provideState" standalone API
+  ],
+  // TODO 18: (Optional) refactor "StoreModule.forFeature" into "provideState" standalone API
+  // hint: the core.module.ts also has to be refactored to standalone APIs for the Store and related modules
 })
 export class TodoModule {}

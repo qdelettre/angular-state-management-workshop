@@ -64,7 +64,9 @@ describe('Todo Reducer', () => {
 
   describe('set todo filter', () => {
     it('should set the filter', () => {
-      const action = TodoPageEvents.todosFilterChanged({ filter: 'ACTIVE' });
+      const action = TodoPageEvents.todosFilterChanged({
+        todoFilter: 'ACTIVE'
+      });
 
       const result = todoReducer(initialState, action);
 

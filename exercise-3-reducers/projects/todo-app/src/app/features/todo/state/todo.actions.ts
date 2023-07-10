@@ -13,6 +13,6 @@ export const TodoPageEvents = createActionGroup({
     'Cancel Edit Todo Triggered': emptyProps(),
     'Update Todo Triggered': props<{ todo: Todo }>(),
     'Remove Done Todos Triggered': emptyProps(),
-    'Todos Filter Changed': props<{ filter: TodoFilter }>(),
+    'Todos Filter Changed': props<{ todoFilter: TodoFilter }>()
   }
 });

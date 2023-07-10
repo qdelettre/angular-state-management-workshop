@@ -1,7 +1,7 @@
 import uuid from 'uuid/v4';
 import { Action, createAction, createReducer, on, props } from '@ngrx/store';
 
-import * as TodoPageEvents from './todo.actions';
+import { TodoPageEvents } from './todo.actions';
 import { Todo, TodoFilter } from './todo.model';
 
 // In this exercise, the order of TODO comments is bit more jumping around the files than in previous exercises

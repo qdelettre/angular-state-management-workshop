@@ -2,16 +2,7 @@ import { NgForm } from '@angular/forms';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 
-import {
-  addTodoWithId,
-  cancelEditTodo,
-  editTodo,
-  filterTodos,
-  removeDoneTodos,
-  removeTodo,
-  toggleTodo,
-  updateTodo
-} from './state/todo.actions';
+import { TodoPageEvents } from './state/todo.actions';
 import { Todo, TodoFilter } from './state/todo.model';
 import { selectTodosView } from './state/todo.selectors';
 
@@ -29,7 +20,9 @@ export class TodoComponent {
 
   addTodo(form: NgForm) {
     if (form.valid) {
-      this.store.dispatch(addTodoWithId(this.newTodoTitle));
+      this.store.dispatch(
+        TodoPageEvents.addTodoWithIDTriggered(this.newTodoTitle)
+      );
       this.newTodoTitle = '';
       form.resetForm();
       form.reset();
@@ -37,30 +30,30 @@ export class TodoComponent {
   }
 
   toggleTodo(id: string) {
-    this.store.dispatch(toggleTodo({ id }));
+    this.store.dispatch(TodoPageEvents.toggleTodoTriggered({ id }));
   }
 
   editTodo(id: string) {
-    this.store.dispatch(editTodo({ id }));
+    this.store.dispatch(TodoPageEvents.editTodoTriggered({ id }));
   }
 
   cancelEditTodo() {
-    this.store.dispatch(cancelEditTodo());
+    this.store.dispatch(TodoPageEvents.cancelEditTodoTriggered());
   }
 
   saveEditTodo(todo: Todo) {
-    this.store.dispatch(updateTodo({ todo }));
+    this.store.dispatch(TodoPageEvents.updateTodoTriggered({ todo }));
   }
 
   removeTodo(id: string) {
-    this.store.dispatch(removeTodo({ id }));
+    this.store.dispatch(TodoPageEvents.removeTodoTriggered({ id }));
   }
 
   removeDoneTodos() {
-    this.store.dispatch(removeDoneTodos());
+    this.store.dispatch(TodoPageEvents.removeDoneTodosTriggered());
   }
 
-  setTodoFilter(filter: TodoFilter) {
-    this.store.dispatch(filterTodos({ filter }));
+  setTodoFilter(todoFilter: TodoFilter) {
+    this.store.dispatch(TodoPageEvents.todosFilterChanged({ todoFilter }));
   }
 }
