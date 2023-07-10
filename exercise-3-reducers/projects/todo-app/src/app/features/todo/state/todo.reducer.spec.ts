@@ -1,14 +1,5 @@
 import { todoReducer, initialState } from './todo.reducer';
-import {
-  editTodo,
-  filterTodos,
-  removeDoneTodos,
-  removeTodo,
-  toggleTodo,
-  updateTodo,
-  cancelEditTodo,
-  addTodoWithId
-} from './todo.actions';
+import { TodoPageEvents } from './todo.actions';
 
 describe('Todo Reducer', () => {
   describe('an unknown action', () => {
@@ -23,7 +14,7 @@ describe('Todo Reducer', () => {
 
   describe('add todo action', () => {
     it('should add todo', () => {
-      const action = addTodoWithId('Test');
+      const action = TodoPageEvents.addTodoWithIDTriggered('Test');
 
       const result = todoReducer(initialState, action);
 
@@ -40,7 +31,7 @@ describe('Todo Reducer', () => {
   describe('toggle todo action', () => {
     it('should toggle todo', () => {
       const id = Object.keys(initialState.items)[1];
-      const action = toggleTodo({ id });
+      const action = TodoPageEvents.toggleTodoTriggered({ id });
 
       const result = todoReducer(initialState, action);
 
@@ -51,7 +42,7 @@ describe('Todo Reducer', () => {
   describe('remove todo action', () => {
     it('should remove todo', () => {
       const id = Object.keys(initialState.items)[0];
-      const action = removeTodo({ id });
+      const action = TodoPageEvents.removeTodoTriggered({ id });
 
       const result = todoReducer(initialState, action);
 
@@ -62,7 +53,7 @@ describe('Todo Reducer', () => {
 
   describe('remove done todos action', () => {
     it('should remove done todos', () => {
-      const action = removeDoneTodos();
+      const action = TodoPageEvents.removeDoneTodosTriggered();
 
       const result = todoReducer(initialState, action);
 
@@ -73,7 +64,7 @@ describe('Todo Reducer', () => {
 
   describe('set todo filter', () => {
     it('should set the filter', () => {
-      const action = filterTodos({ filter: 'ACTIVE' });
+      const action = TodoPageEvents.todosFilterChanged({ filter: 'ACTIVE' });
 
       const result = todoReducer(initialState, action);
 
@@ -84,7 +75,7 @@ describe('Todo Reducer', () => {
   describe('set edited todo id', () => {
     it('should set the edited todo id', () => {
       const id = Object.keys(initialState.items)[0];
-      const action = editTodo({ id });
+      const action = TodoPageEvents.editTodoTriggered({ id });
 
       const result = todoReducer(initialState, action);
 
@@ -94,7 +85,7 @@ describe('Todo Reducer', () => {
 
   describe('unset edit todo id', () => {
     it('should set the edited todo id', () => {
-      const action = cancelEditTodo();
+      const action = TodoPageEvents.cancelEditTodoTriggered();
 
       const result = todoReducer(initialState, action);
 
@@ -105,7 +96,7 @@ describe('Todo Reducer', () => {
   describe('update todo', () => {
     it('should update todo', () => {
       const id = Object.keys(initialState.items)[0];
-      const action = updateTodo({
+      const action = TodoPageEvents.updateTodoTriggered({
         todo: { id, title: 'Updated', done: false }
       });
 

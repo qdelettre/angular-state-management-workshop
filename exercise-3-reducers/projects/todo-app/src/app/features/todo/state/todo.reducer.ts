@@ -1,7 +1,7 @@
 import uuid from 'uuid/v4';
 import { Action, createAction, createReducer, on, props } from '@ngrx/store';
 
-import * as TodoActions from './todo.actions';
+import * as TodoPageEvents from './todo.actions';
 import { Todo, TodoFilter } from './todo.model';
 
 // In this exercise, the order of TODO comments is bit more jumping around the files than in previous exercises
@@ -30,19 +30,19 @@ export const todoReducer = undefined;
 
 // TODO 6: add "on(<some action>, (state, action) => { return state; })" handler (actions were imported as TodoActions)
 
-// TODO 7: implement this for a real action eg "filterTodos" which re-uses whole state and overwrites "todoFilter" with the action payload value
-// hint: try to destructure new filter value from action funcion argument and use ({}) shorthand syntax to return new state object
+// TODO 7: implement this for a real action eg "TodoPageEvents.todosFilterChanged" which re-uses whole state and overwrites "todoFilter" with the action payload value
+// hint: try to destructure new filter value from action function argument and use ({}) shorthand syntax to return new state object
 
 // the 8th step is in todo.module.ts file
 
 // try to implement all other while exploring different ways of creating new state using immutable approach
-// TODO 9: implement "on" handlers for addTodoWithId
-// TODO 10: implement "on" handlers for toggleTodo
-// TODO 11: implement "on" handlers for removeTodo
-// TODO 12: implement "on" handlers for editTodo
-// TODO 13: implement "on" handlers for cancelEditTodo
-// TODO 14: implement "on" handlers for updateTodo
-// TODO 15: implement "on" handlers for removeDoneTodos
+// TODO 9: implement "on" handlers for TodoPageEvents.addTodoWithIDTriggered
+// TODO 10: implement "on" handlers for TodoPageEvents.toggleTodoTriggered
+// TODO 11: implement "on" handlers for TodoPageEvents.removeTodoTriggered
+// TODO 12: implement "on" handlers for TodoPageEvents.editTodoTriggered
+// TODO 13: implement "on" handlers for TodoPageEvents.cancelEditTodoTriggered
+// TODO 14: implement "on" handlers for TodoPageEvents.updateTodoTriggered
+// TODO 15: implement "on" handlers for TodoPageEvents.removeDoneTodosTriggered
 
 // TODO 16: try to run tests to see if adding implementation fulfilled their expectation
 // TODO 17: try to "npm run lint" to see if your implementation follows the best practices

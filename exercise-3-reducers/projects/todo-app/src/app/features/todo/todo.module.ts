@@ -16,5 +16,6 @@ import { TodoEditorComponent } from './todo-editor/todo-editor.component';
     TodoRoutingModule
     // TODO 8: add "StoreModule.forFeature" to the imports and pass in arguments it expects
   ]
+  // TODO 18: refactor "StoreModule.forFeature" into "provideState" standalone API
 })
 export class TodoModule {}
