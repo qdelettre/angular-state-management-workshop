@@ -72,4 +72,6 @@ export class TodoComponent {
   // TODO 19: try to "npm run lint" to see if your actions follow best practices (eg naming)
 
   // TODO 20: try to break lint by removing "origin" part from one of your actions type
+
+  // TODO 21: refactor TODO events to use "createActionGroup" instead of "createAction" and follow event naming convention
 }
