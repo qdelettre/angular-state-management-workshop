@@ -1,4 +1,4 @@
-import { getSelectors } from '@ngrx/router-store';
+import { getRouterSelectors } from '@ngrx/router-store';
 
 const {
   selectQueryParams, // select the current route query params
@@ -7,6 +7,6 @@ const {
   selectRouteParam, // factory function to select a route param
   selectRouteData, // select the current route data
   selectUrl // select the current url
-} = getSelectors();
+} = getRouterSelectors();
 
 export const selectQueryParamId = selectQueryParam('id');
