@@ -1,5 +1,5 @@
 import { NgForm } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 
@@ -26,25 +26,20 @@ import { Todo, TodoFilter } from './state/todo.model';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
-  todos: Observable<Todo[]>;
-  todosCount: Observable<number>;
-  todosFilter: Observable<string>;
-  todosEditedTodo: Observable<Todo | undefined>;
+export class TodoComponent {
+  private store = inject(Store);
+
+  // TODO 6: use selectors instead of hardcoded values (use pipe form of select)
+  todos: Observable<Todo[]> = of([]);
+  todosCount: Observable<number> = of(0);
+  todosFilter: Observable<string> = of('ALL');
+  todosEditedTodo: Observable<Todo | undefined> = of(undefined);
+
+  // TODO 7: try to run npm run watch to run the tests and see if the component tests are passing
+
+  // TODO 9: (Optional) rework view to use `selectSignal` instead of `select`
 
   newTodoTitle: string;
-
-  constructor(private store: Store) {}
-
-  ngOnInit() {
-    // TODO 6: use selectors instead of hardcoded values (use pipe form of select)
-    this.todos = of([]);
-    this.todosCount = of(0);
-    this.todosFilter = of('ALL');
-    this.todosEditedTodo = of(null);
-
-    // TODO 7: try to run npm run watch to run the tests and see if the component tests are passing
-  }
 
   addTodo(form: NgForm) {
     if (form.valid) {
