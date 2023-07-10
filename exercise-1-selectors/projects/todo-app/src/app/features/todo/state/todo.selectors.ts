@@ -2,7 +2,7 @@ import { createFeatureSelector, createSelector } from '@ngrx/store';
 
 import { todoFeatureKey, State } from './todo.reducer';
 
-// TODO 1: create feature selector for the todo feature key
+// TODO 1: create feature selector for the todo feature key, don't forget generic type!
 export const selectTodoFeature = undefined;
 
 // TODO 2: create "selectTodoFilter" selector to select "todoFilter" state property
@@ -18,6 +18,6 @@ export const selectTodosCount = undefined;
 export const selectEditedTodo = undefined;
 
 // TODO 8: create selectTodoView selector to select the "perfect" state for the todo component
-// so that the component and its template only uses that one selector instead of original 4 selectors
+// so that the component and its template only uses that one selector instead of original 4 selectors (remove them)
 // hint: use <ng-container> with *ngIf to unwrap the view state in the template
 // hint: selector can be assigned directly to the property so there should be no reference to any interface

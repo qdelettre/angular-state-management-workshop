@@ -38,6 +38,7 @@ export class TodoComponent {
   // TODO 7: try to run npm run watch to run the tests and see if the component tests are passing
 
   // TODO 9: (Optional) rework view to use `selectSignal` instead of `select`
+  // adjust how the view is used in the template (hint signals are consumed directly as `signal().prop`)
 
   newTodoTitle: string;
 
