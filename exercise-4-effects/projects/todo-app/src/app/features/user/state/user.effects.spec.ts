@@ -6,7 +6,7 @@ import { createSpyObj } from 'jest-createspyobj';
 
 import { UserEffects } from './user.effects';
 import { UserIntegrationService } from '../services/user-integration.service';
-import { loadUsers, loadUsersFailure, loadUsersSuccess } from './user.actions';
+import { UserPageEvents, UserApiEvents } from './user.actions';
 
 describe('UserEffects', () => {
   let scheduler: TestScheduler;
@@ -42,31 +42,31 @@ describe('UserEffects', () => {
 
   it('loads users', () => {
     scheduler.run(({ expectObservable, hot, cold }) => {
-      actions$ = hot('--a-', { a: loadUsers() });
+      actions$ = hot('--a-', { a: UserPageEvents.init() });
 
       userIntegrationServiceMock.load.mockReturnValue(cold('--a|', { a: [] }));
 
       expectObservable(effects.loadUsers$).toBe('----a', {
-        a: loadUsersSuccess({ users: [] })
+        a: UserApiEvents.usersLoadedSuccess({ users: [] })
       });
     });
   });
 
   it('handles failed loading', () => {
     scheduler.run(({ expectObservable, hot, cold }) => {
-      actions$ = hot('--a-', { a: loadUsers() });
+      actions$ = hot('--a-', { a: UserPageEvents.init() });
 
       userIntegrationServiceMock.load.mockReturnValue(cold('--#|'));
 
       expectObservable(effects.loadUsers$).toBe('----a', {
-        a: loadUsersFailure({ error: 'Loading users failed: error' })
+        a: UserApiEvents.usersLoadedFailure({ error: 'Loading users failed: error' })
       });
     });
   });
 
   it('it delivers correct (second) response even if first one comes in as last', () => {
     scheduler.run(({ expectObservable, hot, cold }) => {
-      actions$ = hot('ab', { a: loadUsers(), b: loadUsers() });
+      actions$ = hot('ab', { a: UserPageEvents.init(), b: UserPageEvents.init() });
 
       userIntegrationServiceMock.load.mockReturnValueOnce(
         cold('------a|', { a: [] })
@@ -78,7 +78,7 @@ describe('UserEffects', () => {
       );
 
       expectObservable(effects.loadUsers$).toBe('----a', {
-        a: loadUsersSuccess({
+        a: UserApiEvents.usersLoadedSuccess({
           users: [
             { id: 1, username: 'tester', name: 'Test', surname: 'Tester' }
           ]

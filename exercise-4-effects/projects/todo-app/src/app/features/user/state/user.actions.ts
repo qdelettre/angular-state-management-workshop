@@ -1,67 +1,31 @@
-import { createAction, props } from '@ngrx/store';
+import {  createActionGroup, emptyProps, props } from '@ngrx/store';
 
 import { User } from './user.model';
 
-export const loadUsers = createAction('[User Page] Load Users');
+export const UserPageEvents = createActionGroup({
+  source: 'User Page',
+  events: {
+    'Init': emptyProps(),
+    'Edit User Triggered': props<{ id: number }>(),
+    'Edit User Cancel Triggered': emptyProps(),
+    'Edit User Save Triggered': props<{ user: User }>(),
+    'Create User Save Triggered': props<{ username: string; name: string; surname: string }>(),
+    'Remove User Triggered': props<{ id: number }>(),
 
-export const loadUsersSuccess = createAction(
-  '[User API] Load Users Success',
-  props<{ users: User[] }>()
-);
+  }
+});
 
-export const loadUsersFailure = createAction(
-  '[User API] Load Users Failure',
-  props<{ error: string }>()
-);
+export const UserApiEvents = createActionGroup({
+  source: 'User API',
+  events: {
+    'Users Loaded Success': props<{ users: User[] }>(),
+    'Users Loaded Failure': props<{ error: string }>(),
+    'User Removed Success': props<{ id: number }>(),
+    'User Removed Failure': props<{ error: string }>(),
+    'User Created Success': props<{ user: User }>(),
+    'User Created Failure': props<{ error: string }>(),
+    'User Updated Success': props<{ user: User }>(),
+    'User Updated Failure': props<{ error: string }>(),
+  }
+})
 
-export const removeUser = createAction(
-  '[User Page] Remove User',
-  props<{ id: number }>()
-);
-
-export const removeUserSuccess = createAction(
-  '[User API] Remove User Success',
-  props<{ id: number }>()
-);
-
-export const removeUserFailure = createAction(
-  '[User API] Remove User Failure',
-  props<{ error: string }>()
-);
-
-export const createUser = createAction(
-  '[User Page] Create User',
-  props<{ username: string; name: string; surname: string }>()
-);
-
-export const createUserSuccess = createAction(
-  '[User API] Create User Success',
-  props<{ user: User }>()
-);
-
-export const createUserFailure = createAction(
-  '[User API] Create User Failure',
-  props<{ error: string }>()
-);
-
-export const editUser = createAction(
-  '[User Page] Edit User',
-  props<{ id: number }>()
-);
-
-export const editUserCancel = createAction('[User Page] Edit User Cancel');
-
-export const editUserSave = createAction(
-  '[User Page] Edit User Save',
-  props<{ user: User }>()
-);
-
-export const editUserSaveSuccess = createAction(
-  '[User API] Edit User Success',
-  props<{ user: User }>()
-);
-
-export const editUserSaveFailure = createAction(
-  '[User API] Edit User Failure',
-  props<{ error: string }>()
-);

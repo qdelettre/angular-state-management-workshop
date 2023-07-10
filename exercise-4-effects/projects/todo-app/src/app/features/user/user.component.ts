@@ -2,14 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import { selectUsersView } from './state/user.selectors';
-import {
-  createUser,
-  editUser,
-  editUserCancel,
-  loadUsers,
-  removeUser,
-  editUserSave
-} from './state/user.actions';
+import { UserPageEvents } from './state/user.actions';
 import { User } from './state/user.model';
 
 @Component({
@@ -25,17 +18,17 @@ export class UserComponent implements OnInit {
   constructor(private store: Store) {}
 
   ngOnInit() {
-    this.store.dispatch(loadUsers());
+    this.store.dispatch(UserPageEvents.init());
   }
 
   createNewUser() {
-    this.store.dispatch(editUserCancel());
+    this.store.dispatch(UserPageEvents.editUserCancelTriggered());
     this.newUser = {};
   }
 
   createNewUserSave(user: Partial<User>) {
     const { username, name, surname } = user;
-    this.store.dispatch(createUser({ username, name, surname }));
+    this.store.dispatch(UserPageEvents.createUserSaveTriggered({ username, name, surname }));
     this.newUser = null;
   }
 
@@ -45,18 +38,18 @@ export class UserComponent implements OnInit {
 
   editUser(id: number) {
     this.newUser = null;
-    this.store.dispatch(editUser({ id }));
+    this.store.dispatch(UserPageEvents.editUserTriggered({ id }));
   }
 
   editUserSave(user: User) {
-    this.store.dispatch(editUserSave({ user }));
+    this.store.dispatch(UserPageEvents.editUserSaveTriggered({ user }));
   }
 
   editUserCancel() {
-    this.store.dispatch(editUserCancel());
+    this.store.dispatch(UserPageEvents.editUserCancelTriggered());
   }
 
   removeUser(id: number) {
-    this.store.dispatch(removeUser({ id }));
+    this.store.dispatch(UserPageEvents.removeUserTriggered({ id }));
   }
 }

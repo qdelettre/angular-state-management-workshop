@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import * as UserActions from './user.actions';
+import { UserPageEvents, UserApiEvents } from './user.actions';
 import { User } from './user.model';
 
 export const userFeatureKey = 'user';
@@ -25,14 +25,14 @@ export const initialState: State = {
 export const userReducer = createReducer(
   initialState,
 
-  on(UserActions.loadUsers, state => ({
+  on(UserPageEvents.init, state => ({
     ...state,
     loading: true,
     error: null,
     editedUserId: null
   })),
 
-  on(UserActions.loadUsersSuccess, (state, { users }) => {
+  on(UserApiEvents.usersLoadedSuccess, (state, { users }) => {
     const newState = {
       ...state,
       items: users.reduce((result, user) => {
@@ -46,15 +46,7 @@ export const userReducer = createReducer(
     return newState;
   }),
 
-  on(UserActions.loadUsersFailure, (state, { error }) => ({
-    ...state,
-    items: {},
-    loading: false,
-    error,
-    editedUserId: null
-  })),
-
-  on(UserActions.createUser, state => ({
+  on(UserPageEvents.createUserSaveTriggered, state => ({
     ...state,
     loading: true,
     error: null,
@@ -62,7 +54,7 @@ export const userReducer = createReducer(
   })),
 
   on(
-    UserActions.createUserSuccess,
+    UserApiEvents.userCreatedSuccess,
     (state, { user: { id, username, name, surname } }) => ({
       ...state,
       items: {
@@ -75,24 +67,17 @@ export const userReducer = createReducer(
     })
   ),
 
-  on(UserActions.createUserFailure, (state, { error }) => ({
-    ...state,
-    loading: false,
-    error,
-    editedUserId: null
-  })),
-
-  on(UserActions.editUser, (state, { id }) => ({
+  on(UserPageEvents.editUserTriggered, (state, { id }) => ({
     ...state,
     editedUserId: id
   })),
 
-  on(UserActions.editUserCancel, state => ({
+  on(UserPageEvents.editUserCancelTriggered, state => ({
     ...state,
     editedUserId: null
   })),
 
-  on(UserActions.editUserSave, state => ({
+  on(UserPageEvents.editUserSaveTriggered, state => ({
     ...state,
     loading: true,
     error: null,
@@ -100,7 +85,7 @@ export const userReducer = createReducer(
   })),
 
   on(
-    UserActions.editUserSaveSuccess,
+    UserApiEvents.userUpdatedSuccess,
     (state, { user: { id, name, surname, username } }) => ({
       ...state,
       items: {
@@ -113,21 +98,14 @@ export const userReducer = createReducer(
     })
   ),
 
-  on(UserActions.editUserSaveFailure, (state, { error }) => ({
-    ...state,
-    loading: false,
-    error,
-    editedUserId: null
-  })),
-
-  on(UserActions.removeUser, state => ({
+  on(UserPageEvents.removeUserTriggered, state => ({
     ...state,
     loading: true,
     error: null,
     editedUserId: null
   })),
 
-  on(UserActions.removeUserSuccess, (state, { id }) => {
+  on(UserApiEvents.userRemovedSuccess, (state, { id }) => {
     const newState = {
       ...state,
       items: {
@@ -141,7 +119,12 @@ export const userReducer = createReducer(
     return newState;
   }),
 
-  on(UserActions.removeUserFailure, (state, { error }) => ({
+  on(
+    UserApiEvents.usersLoadedFailure,
+    UserApiEvents.userCreatedFailure,
+    UserApiEvents.userUpdatedFailure,
+    UserApiEvents.userRemovedFailure,
+    (state, { error }) => ({
     ...state,
     loading: false,
     error,

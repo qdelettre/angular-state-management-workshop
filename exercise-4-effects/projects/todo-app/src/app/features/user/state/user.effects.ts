@@ -12,20 +12,7 @@ import {
 } from 'rxjs';
 
 import { UserIntegrationService } from '../services/user-integration.service';
-import {
-  createUser,
-  createUserFailure,
-  createUserSuccess,
-  editUserSave,
-  editUserSaveFailure,
-  editUserSaveSuccess,
-  loadUsers,
-  loadUsersFailure,
-  loadUsersSuccess,
-  removeUser,
-  removeUserFailure,
-  removeUserSuccess
-} from './user.actions';
+import { UserPageEvents, UserApiEvents } from './user.actions';
 import { selectIsAdmin } from './user.selectors';
 
 @Injectable()
@@ -93,3 +80,5 @@ export class UserEffects {
   // whole effect stream, that way no subsequent request will be performed which is something WE DO NOT WANT
   // TIP: ALWAYS handle errors in the nested pipe (of the service) inside of the flattening operator
 }
+
+// TODO 23: (Optional) refactor "loadUsers$" (and other) effects into a functional API
