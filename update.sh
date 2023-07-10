@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 
 find . -type d -name "exercise*" -maxdepth 1 | while read d; do
-   cd $d && pwd && npm ci &&  ng update @angular/cli@16 @angular/core@16 @angular/material@16 @angular-eslint/schematics@16 @ngrx/store@16 @ngrx/effects@16 @ngrx/router-store@16 @ngrx/store-devtools@16 @ngrx/schematics@16 --force && npm i -D jest@28 @types/jest@28 jest-preset-angular@12 && cd ..
+   cd $d && pwd && npm run format:write && cd ..
 done
 
 # Angular 12 -> 13
